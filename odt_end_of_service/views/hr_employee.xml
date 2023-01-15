@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_employee_form_leave_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.leave.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='active_group']" position="before">
+                    <group string="EOS Leaves">
+                        <label for="total_eos_leaves"/>
+                        <div>
+                            <field name="total_eos_leaves" class="oe_inline"/> days
+                        </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

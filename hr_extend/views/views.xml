@@ -1,0 +1,161 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="hr_employee_inh" model="ir.ui.view">
+        <field name="name">hr.employee.form.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- <xpath expr="//header" position="inside">
+                <field name="state" widget="statusbar" clickable="True" statusbar_visible="active,leave,sleave,eos"/>
+            </xpath> -->
+            <!-- <xpath expr="page[@name='hr_settings']" position="after"> -->
+            <page name="hr_settings" position="after"> 
+              <page name="emp_doc" string="Employee Docs" groups="hr.group_hr_user">              <field name="attach_ids">
+                <tree editable="top">
+                  <field name="name" />
+                  <field name="attach" />
+                </tree>
+              </field>
+              </page>
+            </page>
+        </field>
+      </record>
+      <record id="accrual_plan_inh" model="ir.ui.view">
+        <field name="name">accrual_plan.form.view</field>
+        <field name="model">hr.leave.accrual.plan</field>
+        <field name="inherit_id" ref="hr_holidays.hr_accrual_plan_view_form"/>
+        <field name="arch" type="xml">
+          <field name="name" position="after">
+            <field name="code" />
+          </field>
+        </field>
+      </record>
+      <record id="hr_payslip_form__inh" model="ir.ui.view">
+        <field name="name">hr_payslip_form_inh</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+          <field name="worked_days_line_ids" position="before">
+            <group>
+            <group>
+            <field name="over_time" />
+            </group>
+            </group>
+          </field>
+        </field>
+      </record>
+      <record id="hr_payslip_run_inh" model="ir.ui.view">
+            <field name="name">hr_payslip_run_inh</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="om_hr_payroll.hr_payslip_run_form" />
+            <field name="arch" type="xml">
+                 <button name="done_payslip_run" position="before">
+                  <button name="approve1" type="object" string="HR approval" attrs="{'invisible': [('state', '!=', 'draft')]}" class="oe_highlight"/>
+                  <button name="approve2" type="object" string="Finance approval" attrs="{'invisible': [('state', '!=', 'approve1')]}" class="oe_highlight"/>
+                  <button name="approve3" type="object" string="DM approval" attrs="{'invisible': [('state', '!=', 'approve2')]}" class="oe_highlight"/>
+                </button>
+                <button name="done_payslip_run" position="attributes">
+                  <attribute name="attrs">{'invisible': [('state' ,'!=', 'approve3')]}</attribute>
+                </button>
+                <!-- <field name="user_id" position="after">
+                  <field name="manager_id" />
+                </field> -->
+            </field>
+        </record>
+      <record id="hr_contract_inh" model="ir.ui.view">
+        <field name="name">hr_contract_inh</field>
+        <field name="model">hr.contract.history</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_history_view_form" />
+        <field name="arch" type="xml">
+              <field name="contract_ids" position="replace">
+                <field name="contract_ids" widget="one2many" readonly="0">
+                                <tree string="Current Contracts" decoration-primary="state == 'open'" decoration-muted="state == 'close'" decoration-bf="id == parent.contract_id" default_order="date_start desc, state desc" editable="bottom" no_open="1" create="0" delete="0">
+                                    <button name="action_open_contract_form" type="object" icon="fa-external-link"/>
+                                    <field name="id" invisible="1"/>
+                                    <field name="name" string="Contract Name"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="resource_calendar_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="salary" string="Monthly Wage"/>
+                                    <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'close'" decoration-success="state == 'open'"/>
+                                </tree>
+                            </field>
+              </field>
+        </field>
+        </record>
+
+
+      <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr.payroll</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="45"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='om_hr_payroll_account']" position="after">
+               Batch Date
+                            <div class="o_setting_left_pane">
+                                <field name="batch_date"/>
+                            </div>
+            </xpath>
+
+        </field>
+      </record>
+    <!-- <record model="ir.ui.view" id="hr_extend.list">
+      <field name="name">hr_extend list</field>
+      <field name="model">hr.emp.doc</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="attach"/>
+          <field name="employee_id"/>
+        </tree>
+      </field>
+    </record> -->
+
+
+    <!-- actions opening views on models -->
+
+    <!-- <record model="ir.actions.act_window" id="emp_doc_action_window">
+      <field name="name">hr_extend window</field>
+      <field name="res_model">hr.emp.doc</field>
+      <field name="view_mode">tree,form</field>
+    </record> -->
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="hr_extend.action_server">
+      <field name="name">hr_extend server</field>
+      <field name="model_id" ref="model_hr_extend_hr_extend"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="hr_extend" id="hr_extend.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="hr_extend.menu_1" parent="hr_extend.menu_root"/>
+    <menuitem name="Menu 2" id="hr_extend.menu_2" parent="hr_extend.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="hr_extend.menu_1_list" parent="hr_extend.menu_1"
+              action="hr_extend.action_window"/>
+    <menuitem name="Server to list" id="hr_extend" parent="hr_extend.menu_2"
+              action="hr_extend.action_server"/>
+-->
+  </data>
+</odoo>

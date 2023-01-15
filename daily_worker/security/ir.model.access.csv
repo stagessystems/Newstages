@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_worker,daily_worker.daily_worker,model_worker,base.group_user,1,1,1,1
+access_worker_group,worker_group.worker_group,model_worker_group,base.group_user,1,1,1,1
+access_worker_attendance,worker_attendance,model_worker_attendance,base.group_user,1,1,1,1

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="effective_date_express_view_form" model="ir.ui.view">
+            <field name="name">Effective Date Form</field>
+            <field name="model">hr.effective.date</field>
+            <field name="arch" type="xml">
+                <form string="Effective Date Form">
+<header>
+    <button name="action_confirmed" type="object" string="Confirm"/>
+<field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirmed"
+                               statusbar_colors='{"manager_approved":"blue"}'/>
+</header>
+                    <sheet>
+
+                        <group>
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                             <field name="start_date"/>
+                            <field name="identification_no"/>
+                             <!-- <field name="emp_no"/> -->
+                             <field name="dept_id"/>
+                            <field name="job_title"/>
+                            <field name="work_location"/>
+                            <field name="uploaded_file"/>
+
+                        </group>
+
+                    </sheet>
+<div class="o_attachment_preview"
+options="{'type': ['pdf']}" />
+                        <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="effective_date_express_view_tree" model="ir.ui.view">
+            <field name="name">Effective Date</field>
+            <field name="model">hr.effective.date</field>
+            <field name="arch" type="xml">
+                <tree string="Effective Date Tree">
+                     <field name="name"/>
+                            <field name="employee_id"/>
+                             <field name="start_date"/>
+                             <!-- <field name="emp_no"/> -->
+                             <field name="dept_id"/>
+                             <field name="job_title"/>
+                             <field name="work_location"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- <record id="effective_date_search_from" model="ir.ui.view">
+           <field name="name">Search View</field>
+           <field name="model">hr.effective.date</field>
+            <field name="arch" type="xml">
+                <search string="Search View">
+              <field name="name" string="string" domain="[()]"/>
+            </search>
+           </field>
+        </record> -->
+
+        <record id="effective_date_action" model="ir.actions.act_window">
+            <field name="name">Effective Date Form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.effective.date</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="effective_date_express_menu" name="Effective Date" parent="hr.menu_hr_root" action="effective_date_action" sequence="8"/>
+
+    </data>
+</odoo>

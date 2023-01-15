@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="effective_hr_employee_from_view" model="ir.ui.view">
+            <field name="name">hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <div name="button_box" position="inside">
+                    <button name="open_effective_dates" class="oe_stat_button" type="object" icon="fa-address-card">
+                        <field string="Effective Dates" name="effective_dates_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <xpath expr="//header" position="inside">
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"  statusbar_visible="active,onleave,suspended,resign,terminated"/>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="joining_date"/>
+                </xpath>
+                <xpath expr="//h1//field[@name='name']/.." position="after">
+                <group>
+                    <field name="emp_no"/>
+                </group>
+            </xpath>
+
+                <xpath expr="//field[@name='coach_id']" position="after">
+                    <field name="last_effective_date"/>
+                    <field name="annual_leave_days"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

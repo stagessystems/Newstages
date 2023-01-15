@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_settlement_deserved,settlement_deserved,model_settlement_deserved,base.group_user,1,1,1,1
+access_settlement_deduction,settlement_deduction,model_settlement_deduction,base.group_user,1,1,1,1
+access_hr_effective_date,hr_effective_date,model_hr_effective_date,base.group_user,1,1,1,1
+access_settlement_conf_ticket,settlement_conf_ticket,model_settlement_conf_ticket,base.group_user,1,1,1,1
+
+

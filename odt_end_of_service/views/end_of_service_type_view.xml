@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_end_of_service_type_form" model="ir.ui.view">
+            <field name="name">end.of.service.type.form</field>
+            <field name="model">end.of.service.type</field>
+            <field name="arch" type="xml">
+                <form >
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="minimum_months"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="from_year"/>
+                            </group>
+                            <group>
+                                <field name="to_year"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="basic" string="Basic">
+
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="level"/>
+                                        <field name="from_month"/>
+                                        <field name="to_month"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="salary_items" string="Salary Items">
+                                <field name="salary_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="level"/>
+                                        <field name="salary_rule_id"/>
+                                        <field name="percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_end_of_service_type_tree" model="ir.ui.view">
+            <field name="name">end.of.service.type.tree</field>
+            <field name="model">end.of.service.type</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="minimum_months"/>
+                    <field name="from_year"/>
+                    <field name="to_year"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_end_of_service_type" model="ir.actions.act_window">
+            <field name="name">End of Service Types</field>
+            <field name="res_model">end.of.service.type</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_end_of_service_type" id="hr_menu_end_of_service_type" parent="hr.menu_human_resources_configuration" sequence="6"/>
+
+
+    </data>
+</openerp>

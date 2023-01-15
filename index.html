@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+    <html lang="en-US" data-website-id="1" data-oe-company-name="Odoo S.A.">
+    <head>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+      <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="generator" content="Odoo"/>
+      <meta name="google-site-verification" content="pgjyH0qvN69B0m_HrTKV6h8TVnbRXp5etEHo19unPy4"/>
+                        <meta property="og:type" content="website"/>
+                        <meta property="og:title" content="hr_payroll_community | Odoo Apps Store"/>
+                        <meta property="og:site_name" content="Odoo S.A."/>
+                        <meta property="og:url" content="https://apps.odoo.com/apps/modules/15.0/hr_payroll_community/"/>
+                        <meta property="og:image" content="https://apps.odoo.com/web/image/website/1/logo?unique=b46a9a6"/>
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta name="twitter:title" content="hr_payroll_community | Odoo Apps Store"/>
+                    <meta name="twitter:image" content="https://apps.odoo.com/web/image/website/1/logo?unique=b46a9a6"/>
+        <link rel="canonical" href="http://apps.odoo.com/apps/modules/15.0/hr_payroll_community/"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""/>
+                <title> Odoo15 Payroll | Odoo Apps Store </title>
+                <link type="image/x-icon" rel="shortcut icon" href="//apps.odoocdn.com/web/image/website/1/favicon?unique=b46a9a6"/>
+            <link rel="preload" href="//apps.odoocdn.com/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+            <link type="text/css" rel="stylesheet" href="//apps.odoocdn.com/web/content/11037727-7a177e6/1/web.assets_common.css" data-asset-xmlid="web.assets_common" data-asset-version="7a177e6"/>
+            <link type="text/css" rel="stylesheet" href="//apps.odoocdn.com/web/content/11037755-0759003/1/web.assets_frontend.css" data-asset-xmlid="web.assets_frontend" data-asset-version="0759003"/>
+                <script id="web.layout.odooscript" type="text/javascript">
+                    var odoo = {
+                        csrf_token: "ba80ad7dc831e89263c6c3fe858209bca6a99d9ao1678991415",
+                        debug: "",
+                    };
+                </script>
+            <script type="text/javascript">
+                odoo.session_info = {"is_admin": false, "is_system": false, "is_website_user": true, "user_id": false, "is_frontend": true, "translationURL": "/website/translations", "cache_hashes": {"translations": "9abe6ca5009dcf42c2231f19055828a776612cc3"}};
+                if (!/(^|;\s)tz=/.test(document.cookie)) {
+                    const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    document.cookie = `tz=${userTZ}; path=/`;
+                }
+            </script>
+                <script src="https://www.recaptcha.net/recaptcha/api.js?render=6Lcul_cUAAAAAIm051Is0wb8-Tq-AiOaK_ePfzvo"></script>
+                <script>
+                    if (window.grecaptcha) {
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute('6Lcul_cUAAAAAIm051Is0wb8-Tq-AiOaK_ePfzvo', {action: 'apps_download'});
+                        });
+                    }
+                </script>
+            <script defer="defer" type="text/javascript" src="//apps.odoocdn.com/web/content/8728301-15aad27/1/web.assets_common_minimal_js.js" data-asset-xmlid="web.assets_common_minimal_js" data-asset-version="15aad27"></script>
+            <script defer="defer" type="text/javascript" src="//apps.odoocdn.com/web/content/8728302-5980b62/1/web.assets_frontend_minimal_js.js" data-asset-xmlid="web.assets_frontend_minimal_js" data-asset-version="5980b62"></script>
+            <script defer="defer" type="text/javascript" data-src="//apps.odoocdn.com/web/content/11037732-2bdc0d5/1/web.assets_common_lazy.js" data-asset-xmlid="web.assets_common_lazy" data-asset-version="2bdc0d5"></script>
+            <script defer="defer" type="text/javascript" data-src="//apps.odoocdn.com/web/content/11037758-972aed7/1/web.assets_frontend_lazy.js" data-asset-xmlid="web.assets_frontend_lazy" data-asset-version="972aed7"></script>
+            <noscript id="o_animate-no-js_fallback">
+                <style type="text/css">
+                    .o_animate {
+                        /* If no js - force elements rendering */
+                        visibility:visible;
+                        /* If browser support css animations support - reset animation */
+                        -webkit-animation-name: none-dummy;
+                        animation-name: none-dummy;
+                    }
+                </style>
+            </noscript>
+        <link rel="canonical" href="https://apps.odoo.com/apps/modules/15.0/hr_payroll_community/"/>
+            <noscript>
+                <style>
+                    /* Prevent animated elements hiding */
+                    .o_animate_in_children > * {
+                        opacity: 1!important;
+                        -webkit-transform: scale(1)!important;
+                        -ms-transform: scale(1)!important;
+                        transform: scale(1)!important;
+                    }
+                </style>
+            </noscript>
+    </head>
+            <body class="">
+        <div id="wrapwrap" style="backface-visibility: hidden" class="loempia_modules_page">
+                <header id="top" data-anchor="true" data-name="Header" class="o_main_header o_has_sub_nav o_inverted">
+                    <div class="o_main_header_main">
+      <a class="float-left o_logo" href="/"></a>
+      <a href="#" role="button" class="o_mobile_menu_toggle o_no_ripple d-inline-block d-md-none">
+        <i class="fa fa-bars"></i>
+      </a>
+      <div class="o_header_buttons">
+        <a href="/shop/cart" class="d-none">
+          <i class="fa fa-shopping-cart"></i>
+          <sup class="my_cart_quantity badge badge-primary"></sup>
+        </a>
+            <li class="nav-item o_no_autohide_item">
+                <a href="/web/login" class="nav-link">Sign in</a>
+            </li>
+          <a class="btn btn-primary" href="/trial">Try it free</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle o-no-caret">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 o_finance_apps ">
+                  <div class="o_nav_app_family">Finance</div>
+                  <ul>
+                    <li>
+                      <a href="/app/accounting">Accounting</a>
+                    </li>
+                    <li>
+                      <a href="/app/invoicing">Invoicing</a>
+                    </li>
+                    <li>
+                      <a href="/app/expenses">Expenses</a>
+                    </li>
+                    <li>
+                      <a href="/app/spreadsheet">Spreadsheet (BI)</a>
+                    </li>
+                    <li>
+                      <a href="/app/documents">Documents</a>
+                    </li>
+                    <li>
+                      <a href="/app/sign">Sign</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_sale_apps ">
+                  <div class="o_nav_app_family">Sales</div>
+                  <ul>
+                    <li>
+                      <a href="/app/crm">CRM</a>
+                    </li>
+                    <li>
+                      <a href="/app/sales">Sales</a>
+                    </li>
+                    <li>
+                      <a href="/app/point-of-sale-shop">Point of Sale</a>
+                    </li>
+                    <li>
+                      <a href="/app/subscriptions">Subscriptions</a>
+                    </li>
+                    <li>
+                      <a href="/app/rental">Rental</a>
+                    </li>
+                    <li>
+                      <a href="/app/amazon-connector">Amazon Connector</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_website_apps ">
+                  <div class="o_nav_app_family">Websites</div>
+                  <ul>
+                    <li>
+                      <a href="/app/website">Website</a>
+                    </li>
+                    <li>
+                      <a href="/app/ecommerce">eCommerce</a>
+                    </li>
+                    <li>
+                      <a href="/app/blog">Blogs</a>
+                    </li>
+                    <li>
+                      <a href="/app/forums">Forums</a>
+                    </li>
+                    <li>
+                      <a href="/app/live-chat">Live Chat</a>
+                    </li>
+                    <li>
+                      <a href="/app/elearning">eLearning</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_inventory_apps ">
+                  <div class="o_nav_app_family">Inventory & MRP</div>
+                  <ul>
+                    <li>
+                      <a href="/app/inventory">Inventory</a>
+                    </li>
+                    <li>
+                      <a href="/app/manufacturing">Manufacturing</a>
+                    </li>
+                    <li>
+                      <a href="/app/plm">PLM</a>
+                    </li>
+                    <li>
+                      <a href="/app/purchase">Purchase</a>
+                    </li>
+                    <li>
+                      <a href="/app/maintenance">Maintenance</a>
+                    </li>
+                    <li>
+                      <a href="/app/quality">Quality</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 o_hr_apps ">
+                  <div class="o_nav_app_family">Human Resources</div>
+                  <ul>
+                    <li>
+                      <a href="/app/employees">Employees</a>
+                    </li>
+                    <li>
+                      <a href="/app/recruitment">Recruitment</a>
+                    </li>
+                    <li>
+                      <a href="/app/time-off">Time Off</a>
+                    </li>
+                    <li>
+                      <a href="/app/appraisals">Appraisals</a>
+                    </li>
+                    <li>
+                      <a href="/app/referrals">Referrals</a>
+                    </li>
+                    <li>
+                      <a href="/app/fleet">Fleet</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_marketing_apps ">
+                  <div class="o_nav_app_family">Marketing</div>
+                  <ul>
+                    <li>
+                      <a href="/app/social-marketing">Social Marketing</a>
+                    </li>
+                    <li>
+                      <a href="/app/email-marketing">Email Marketing</a>
+                    </li>
+                    <li>
+                      <a href="/app/sms-marketing">SMS Marketing</a>
+                    </li>
+                    <li>
+                      <a href="/app/events">Events</a>
+                    </li>
+                    <li>
+                      <a href="/app/marketing-automation">Marketing Automation</a>
+                    </li>
+                    <li>
+                      <a href="/app/surveys">Surveys</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_services_apps ">
+                  <div class="o_nav_app_family">Services</div>
+                  <ul>
+                    <li>
+                      <a href="/app/project">Project</a>
+                    </li>
+                    <li>
+                      <a href="/app/timesheet">Timesheet</a>
+                    </li>
+                    <li>
+                      <a href="/app/field-service">Field Service</a>
+                    </li>
+                    <li>
+                      <a href="/app/helpdesk">Helpdesk</a>
+                    </li>
+                    <li>
+                      <a href="/app/planning">Planning</a>
+                    </li>
+                    <li>
+                      <a href="/app/appointments">Appointments</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3 o_productivity_apps ">
+                  <div class="o_nav_app_family">Productivity</div>
+                  <ul>
+                    <li>
+                      <a href="/app/discuss">Discuss</a>
+                    </li>
+                    <li>
+                      <a href="/app/approvals">Approvals</a>
+                    </li>
+                    <li>
+                      <a href="/app/iot">IoT</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <span class="o_store_link d-md-flex justify-content-md-center">
+              <a href="https://apps.odoo.com/apps/modules" class="mx-md-3 px-3"><i class="fa fa-cube fa-fw mr-2"></i>Third party apps</a>
+              <a href="/app/studio" class="mx-md-3 px-3"><i class="fa fa-pencil fa-fw mr-2"></i>Odoo Studio</a>
+              <a href="https://www.odoo.sh" class="mx-md-3 px-3"><i class="fa fa-cloud fa-fw mr-2"></i>Odoo Cloud Platform</a>
+            </span>
+          </div>
+        </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle o-no-caret">Community</a>
+            <div class="dropdown-menu o_secondary_nav">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-3 o_learn_com">
+                    <div class="o_nav_com_family">Learn
+                                            </div>
+                    <ul>
+                      <li>
+                        <a href="https://www.odoo.com/elearning" data-original-title="" title="" aria-describedby="tooltip680368">eLearning</a>
+                      </li>
+                      <li>
+                        <a href="/page/docs">Documentation</a>
+                      </li>
+                      <li>
+                        <a href="/slides/all?slide_type=certification">Certifications</a>
+                      </li>
+                    </ul>
+                    <ul class="pt-lg-3">
+                      <li>
+                        <a href="/page/education-program">Education Program</a>
+                      </li>
+                      <li>
+                        <a href="/page/scale-up-business-game">Scale Up! Business Game</a>
+                      </li>
+                    </ul>
+                    <ul class="pt-lg-3">
+                      <li>
+                        <a href="/blog/customer-reviews-6">Customer References</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 o_software_com">
+                    <div class="o_nav_com_family">Get the Software
+                                            </div>
+                    <ul>
+                      <li>
+                        <a href="/page/download">Download</a>
+                      </li>
+                      <li>
+                        <a href="/page/editions">Compare Editions</a>
+                      </li>
+                      <li>
+                        <a href="/page/release-notes">Releases</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 o_collab_com">
+                    <div class="o_nav_com_family">Collaborate
+                                            </div>
+                    <ul>
+                      <li>
+                        <a href="https://github.com/odoo">Github</a>
+                      </li>
+                      <li>
+                        <a href="/forum/help-1">Forum</a>
+                      </li>
+                      <li>
+                        <a href="/events">Events</a>
+                      </li>
+                      <li>
+                        <a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a>
+                      </li>
+                    </ul>
+                    <ul class="pt-lg-3">
+                      <li>
+                        <a href="/become-a-partner">Become a Partner</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 o_services_com">
+                    <div class="o_nav_com_family">Get Services
+                                            </div>
+                    <ul>
+                      <li>
+                        <a href="/partners">Find a Partner</a>
+                      </li>
+                      <li>
+                        <a href="/accounting-firms">Find an Accountant</a>
+                      </li>
+                    </ul>
+                    <ul class="pt-lg-3">
+                      <li>
+                          <a href="https://www.odoo.com/r/meeting-us" target="_blank">Get a Tailored Demo</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <span class="o_header_social d-md-flex justify-content-md-center">
+                <a href="/web/about/github" class="mx-3">
+                  <i class="fa fa-fw fa-github"></i>
+                </a>
+                <a href="/web/about/youtube" class="mx-3">
+                  <i class="fa fa-fw fa-youtube-play"></i>
+                </a>
+                <a href="/web/about/twitter" class="mx-3">
+                  <i class="fa fa-fw fa-twitter"></i>
+                </a>
+                <a href="/web/about/linkedin" class="mx-3">
+                  <i class="fa fa-fw fa-linkedin"></i>
+                </a>
+                <a href="/web/about/instagram" class="mx-3">
+                  <i class="fa fa-fw fa-instagram"></i>
+                </a>
+                <a href="/web/about/facebook" class="mx-3">
+                  <i class="fa fa-fw fa-facebook"></i>
+                </a>
+              </span>
+            </div>
+          </li>
+          <li>
+            <a href="/pricing">Pricing</a>
+          </li>
+      </ul>
+    </div>
+        <div id="loempia_navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/apps/modules/browse">
+                                    <i class="fa fa-cube"></i> <b>APPS</b>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                    <a itemprop="applicationCategory" href="/apps/modules/category/Human Resources/browse">Human Resources</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a class="o-text-overflow-inline-block" style="max-width: 200px;" href="/apps/modules/browse?search=Odoo15 Payroll">Odoo15 Payroll</a>
+                                <a href="/apps/modules/browse?series=15.0">
+                                    <span class="badge bg-white">
+        v 
+        15.0
+                                    </span>
+                                </a>
+                            </li>
+                            <div class="d-flex justify-content-end flex-grow-1">
+                                <a target="_blank" class="mr16" href="/apps/sales-conditions">Sales Conditions</a>
+                                <a target="_blank" class="" href="/apps/faq">FAQ</a>
+                            </div>
+                        </ol>
+                    </div>
+                    <div class="d-block d-md-none col-1">
+                        <a class="loempia_btn loempia_navbar_back_btn" href="/apps/modules/browse">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-11">
+        <form method="get" class="navbar-search form-inline input-group" action="/apps/modules//browse">
+            <input type="text" name="search" class="search-query form-control" placeholder="Your search..." value=""/>
+            <span class="input-group-append">
+                <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
+            </span>
+        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </header>
+                <main>
+            <div id="wrap" itemscope="" itemtype="http://schema.org/SoftwareApplication" class="js_apps auto_pop">
+                    <div class="container apps_page">
+                        <meta itemprop="applicationCategory" content="APPLICATION"/>
+                        <span itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"> <meta itemprop="name" content="Odoo S.A."/></span>
+                        <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                            <meta itemprop="availability" content="https://schema.org/InStock"/>
+                            <meta itemprop="price"/>
+                            <meta itemprop="priceCurrency" content="seo_module.currency_id.name"/>
+                        </span>
+                        <div class="row">
+        <div class="col-md-7 col-xl-6 mb32">
+            <div class="loempia_app_cover deep-1" style="background-image:url(//apps.odoocdn.com/apps/module_image?image_id=10515868&amp;unique=c2ef0b56060adb5e838d0478e47deafe8b9a3b7d) !important"></div>
+        </div>
+        <div id="loempia_app_infos" class="col-md-5 col-xl-6 mb32 loempia_app_info_has_cover">
+            <div class="d-flex">
+                    <img itemprop="image" class="deep-1 loempia_app_icon big" src="//apps.odoocdn.com/web/image/loempia.module/106661/icon_image/84x84?unique=f9e8f5c" loading="lazy"/>
+                    <div class="loempia_app_title">
+                        <h1 class="mt0 mb0" itemprop="name"><b>Odoo15 Payroll</b></h1>
+                            <small>by</small>
+                               <a href="/apps/modules/browse?author=Odoo S.A.">
+                                    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                        <span itemprop="name">Odoo S.A.</span>
+                                        <span class="d-none" itemprop="url">https://www.cybrosys.com</span>
+                                    </span>
+                                </a>
+                                ,
+                               <a href="/apps/modules/browse?author=Cybrosys Techno Solutions">
+                                    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                        <span itemprop="name">Cybrosys Techno Solutions</span>
+                                        <span class="d-none" itemprop="url">https://www.cybrosys.com</span>
+                                    </span>
+                                </a>
+                            <div class="mb4">
+                                <span class="d-none" itemprop="operatingSystem">Odoo</span>
+                            </div>
+                    </div>
+                    <div class="loempia_app_title ml-auto text-right">
+                    </div>
+            </div>
+            <div class="loempia_tags">
+                        <span class="badge badge-violet-dark" itemprop="softwareVersion">
+                            <b>
+        v 
+        15.0
+    </b>
+                        </span>
+                    <span><i class="fa fa-group"></i> Third Party</span>
+                    <span title="Downloads"><i class="fa fa-download"></i> 4009</span>
+            </div>
+                <form method="post" class="oe_import" action="https://www.odoo.com/shop/apps_cart_update">
+                    <input class="js_module_id" type="hidden" value="106661"/>
+                    <input class="js_product_price" type="hidden"/>
+                                    <a href="#" id="dlbtn" itemprop="downloadUrl" class="js_apps_download btn btn-primary mb16" data-version="15.0">
+                                        Download for v <b><span>15.0</span></b>
+                                    </a>
+                                    <a id="dlbtn" class="btn btn-primary mb16" href="/loempia/download/odoo-sh/hr_payroll_community/15.0.1.0.0">
+                                        Deploy on <b>Odoo.sh</b>
+                                    </a>
+                    <input id="url_cart" type="hidden" value="https://www.odoo.com"/>
+                    <div id="js_login_alert" class="alert alert-info d-none mt8 mb0" role="alert">
+                        Apps purchases are linked to your Odoo account, please <a class="alert-link" href="/web/login?redirect=/apps/modules/15.0/hr_payroll_community">sign in</a> or <a class="alert-link" href="https://www.odoo.com/web/signup">sign up</a> first.
+                    </div>
+                </form>
+                    <form id="download_form" class="d-none" method="post" action="/loempia/verify-download">
+                        <input type="hidden" name="module_name" value="hr_payroll_community"/>
+                        <input type="hidden" name="version" value="15.0"/>
+                        <input type="hidden" name="dl_hash" value="6EX7KcbEyGOWACxhwJ0K8B"/>
+                        <input type="hidden" name="grc3_token"/>
+                        <input type="hidden" name="csrf_token" value="ba80ad7dc831e89263c6c3fe858209bca6a99d9ao1678991415"/>
+                    </form>
+            <div class="p-0 col-12 d-md-none d-lg-block">
+        <table style="word-wrap: break-word;" class="loempia_app_table table table-sm small mt16">
+            <thead class="alert-info">
+                <tr>
+                    <td><b>Required Apps</b>
+                        <a data-toggle="popover" data-content="This app requires some additional standard apps from Odoo to be installed. Please note that installing these apps may upsell your contract if you have a monthly subscription to Odoo services that does not already include these apps.">
+                            <i class="fa fa-exclamation-triangle text-danger" role="img" aria-label="Warning"></i>
+                        </a>
+                    </td>
+                    <td>
+                            &bull; 
+                            <span>Time Off (hr_holidays)</span>
+                            <br/>
+                            &bull; 
+                            <span>Employees (hr)</span>
+                            <br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="js_bundled_deps"><b>Included Dependencies</b></td>
+                    <td>
+                        <a role="button" id="more_deps" data-toggle="collapse" href="#resetCollapse" aria-expanded="false" aria-controls="resetCollapse">Show</a>
+                        <div class="collapse" id="resetCollapse">
+                                <a href="/apps/modules/15.0/hr_contract_types">Odoo15 Employee Contracts Types</a>
+                                <br/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Lines of code</b>
+                        <a data-toggle="popover" data-html="true" data-content="Odoo's public price to maintain custom code and third party module                is &lt;b&gt;$ &lt;span class=&quot;oe_currency_value&quot;&gt;18.00&lt;/span&gt;&lt;/b&gt; per &lt;b&gt;100&lt;/b&gt; lines of code. The service includes unlimited technical support                tickets, bug fixes and upgrade. &lt;br&gt; This module has a total of &lt;b&gt;2478&lt;/b&gt; lines of code (dependencies included).                The estimated maintenance cost for this module is then &lt;b&gt;$ &lt;span class=&quot;oe_currency_value&quot;&gt;450.00&lt;/span&gt;&lt;/b&gt; per month.">
+                                <i class="fa fa-exclamation-circle text-info" role="img" aria-label="Info"></i>
+                        </a>
+                    </td>
+                    <td><span>2478</span></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Technical Name</b></td>
+                    <td><code>
+                    hr_payroll_community</code></td>
+                </tr>
+                <tr>
+                    <td><b>License</b></td><td>AGPL-3</td>
+                </tr>
+                <tr>
+                    <td><b>Website</b></td><td><a rel="nofollow" href="https://www.cybrosys.com">https://www.cybrosys.com</a></td>
+                </tr>
+                <tr>
+                    <td class="loempia_app_availability"><b>Also available in version</b></td>
+                    <td>
+                            <a href="/apps/modules/13.0/hr_payroll_community">
+                                <span class="badge bg-beta mr8">
+        v 
+        13.0
+                                </span>
+                            </a>
+                            <a href="/apps/modules/14.0/hr_payroll_community">
+                                <span class="badge bg-beta mr8">
+        v 
+        14.0
+                                </span>
+                            </a>
+                    </td>
+                </tr>
+            </tbody>
+      </table>
+            </div>
+            <small class="text-muted mb16">
+                You bought this module and need <b>support</b>?
+                <a rel="nofollow" href="/apps/support/106661">
+                Click here!
+                </a>
+            </small>
+        </div>
+                        </div>
+                        <div class="row d-none d-md-block d-lg-none">
+                            <div class="col-md-12">
+        <table style="word-wrap: break-word;" class="loempia_app_table table table-sm small mt16">
+            <thead class="alert-info">
+                <tr>
+                    <td><b>Required Apps</b>
+                        <a data-toggle="popover" data-content="This app requires some additional standard apps from Odoo to be installed. Please note that installing these apps may upsell your contract if you have a monthly subscription to Odoo services that does not already include these apps.">
+                            <i class="fa fa-exclamation-triangle text-danger" role="img" aria-label="Warning"></i>
+                        </a>
+                    </td>
+                    <td>
+                            &bull; 
+                            <span>Time Off (hr_holidays)</span>
+                            <br/>
+                            &bull; 
+                            <span>Employees (hr)</span>
+                            <br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="js_bundled_deps"><b>Included Dependencies</b></td>
+                    <td>
+                        <a role="button" id="more_deps" data-toggle="collapse" href="#resetCollapse" aria-expanded="false" aria-controls="resetCollapse">Show</a>
+                        <div class="collapse" id="resetCollapse">
+                                <a href="/apps/modules/15.0/hr_contract_types">Odoo15 Employee Contracts Types</a>
+                                <br/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Lines of code</b>
+                        <a data-toggle="popover" data-html="true" data-content="Odoo's public price to maintain custom code and third party module                is &lt;b&gt;$ &lt;span class=&quot;oe_currency_value&quot;&gt;18.00&lt;/span&gt;&lt;/b&gt; per &lt;b&gt;100&lt;/b&gt; lines of code. The service includes unlimited technical support                tickets, bug fixes and upgrade. &lt;br&gt; This module has a total of &lt;b&gt;2478&lt;/b&gt; lines of code (dependencies included).                The estimated maintenance cost for this module is then &lt;b&gt;$ &lt;span class=&quot;oe_currency_value&quot;&gt;450.00&lt;/span&gt;&lt;/b&gt; per month.">
+                                <i class="fa fa-exclamation-circle text-info" role="img" aria-label="Info"></i>
+                        </a>
+                    </td>
+                    <td><span>2478</span></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Technical Name</b></td>
+                    <td><code>
+                    hr_payroll_community</code></td>
+                </tr>
+                <tr>
+                    <td><b>License</b></td><td>AGPL-3</td>
+                </tr>
+                <tr>
+                    <td><b>Website</b></td><td><a rel="nofollow" href="https://www.cybrosys.com">https://www.cybrosys.com</a></td>
+                </tr>
+                <tr>
+                    <td class="loempia_app_availability"><b>Also available in version</b></td>
+                    <td>
+                            <a href="/apps/modules/13.0/hr_payroll_community">
+                                <span class="badge bg-beta mr8">
+        v 
+        13.0
+                                </span>
+                            </a>
+                            <a href="/apps/modules/14.0/hr_payroll_community">
+                                <span class="badge bg-beta mr8">
+        v 
+        14.0
+                                </span>
+                            </a>
+                    </td>
+                </tr>
+            </tbody>
+      </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="module-description">
+                            <div class="container loempia_srt_container">
+        <div class="container">
+            <div class="oe_styling_v8">
+                <div class="container" style="padding:4rem 1.5rem !important">
+    <div class="row" style="height:900px !important">
+        <div class="col-sm-12 col-md-12 col-lg-12" style="padding:4rem 1rem !important; background-color:#714B67 !important; height:600px !important; border-radius:20px !important">
+            <h1 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#FFFFFF !important; font-size:3.5rem !important; text-align:center !important">
+                Odoo 15 Payroll</h1>
+            <p style="font-family:'Montserrat', sans-serif !important; font-weight:300 !important; color:#FFFFFF !important; font-size:1.4rem !important; text-align:center !important">
+                Managing employee salary in your organization
+            </p>
+            <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/screenshots/hero.png?65d6d2d" class="img-responsive" width="100%" height="auto">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="border-bottom:1px solid #d5d5d5 !important; margin-bottom:2rem !important">
+            <h2 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.5rem !important">
+                <i class="fa fa-compass mr-2"></i>Explore this module
+            </h2>
+        </div>
+        <div class="col-md-6">
+            <a href="#overview" style="text-decoration:none !important">
+                <div class="row" style="background-color:#f5f2f5 !important; border-radius:10px !important; margin:1rem !important; padding:1.5em !important; height:100px !important">
+                    <div class="col-8">
+                        <h3 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.2rem !important">
+                            Overview</h3>
+                        <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#714B67 !important; font-size:0.9rem !important">
+                            Learn more about this module</p>
+                    </div>
+                    <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                        <i class="fa fa-chevron-right" style="color:#714B67 !important"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="#features" style="text-decoration:none !important">
+                <div class="row" style="background-color:#f5f2f5 !important; border-radius:10px !important; margin:1rem !important; padding:1.5em !important; height:100px !important">
+                    <div class="col-8">
+                        <h3 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.2rem !important">
+                            Features</h3>
+                        <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#714B67 !important; font-size:0.9rem !important">
+                            View features of this module</p>
+                    </div>
+                    <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                        <i class="fa fa-chevron-right" style="color:#714B67 !important"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="#screenshots" style="text-decoration:none !important">
+                <div class="row" style="background-color:#f5f2f5 !important; border-radius:10px !important; margin:1rem !important; padding:1.5em !important; height:100px !important">
+                    <div class="col-8">
+                        <h3 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.2rem !important">
+                            Screenshots</h3>
+                        <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#714B67 !important; font-size:0.9rem !important">
+                            See key screenshots of this module</p>
+                    </div>
+                    <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                        <i class="fa fa-chevron-right" style="color:#714B67 !important"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row" id="overview">
+        <div class="col-md-12" style="border-bottom:1px solid #d5d5d5 !important; margin:2rem 0 !important">
+            <h2 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.5rem !important">
+                <i class="fa fa-pie-chart mr-2"></i>Overview
+            </h2>
+        </div>
+        <div class="col-mg-12 pl-3">
+            <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#282F33 !important; font-size:1rem !important; line-height:30px !important">
+                Payroll management revolves in and around the management of employee salary in an organization. The
+                management includes timely issuance of salary, employee benefits/ allowances, deducting employee
+                loan amount and so on.
+            </p>
+        </div>
+    </div>
+    <div class="row" id="features">
+        <div class="col-md-12" style="border-bottom:1px solid #d5d5d5 !important; margin:2rem 0 !important">
+            <h2 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.5rem !important">
+                <i class="fa fa-star mr-2"></i>Features
+            </h2>
+        </div>
+        <div class="col-md-6 pl-3 py-3 d-flex">
+            <div>
+                <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/check.png?65d6d2d">
+            </div>
+            <div>
+                <h4 style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                    Salary Rules</h4>
+                <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#282F33 !important; font-size:1rem !important">
+                    Configuring Salary Rules</p>
+            </div>
+        </div>
+        <div class="col-md-6 pl-3 py-3 d-flex">
+            <div>
+                <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/check.png?65d6d2d">
+            </div>
+            <div>
+                <h4 style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                    Salary Structure</h4>
+                <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#282F33 !important; font-size:1rem !important">
+                    Configuring Salary Structure</p>
+            </div>
+        </div>
+        <div class="col-md-6 pl-3 py-3 d-flex">
+            <div>
+                <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/check.png?65d6d2d">
+            </div>
+            <div>
+                <h4 style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                    Employee Pay Slips</h4>
+                <p style="font-family:'Roboto', sans-serif !important; font-weight:400 !important; color:#282F33 !important; font-size:1rem !important">
+                    Manage Employee Pay Slips</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="screenshots">
+        <div class="col-md-12" style="border-bottom:1px solid #d5d5d5 !important; margin:2rem 0 !important">
+            <h2 style="font-family:'Montserrat', sans-serif !important; font-weight:600 !important; color:#714B67 !important; font-size:1.5rem !important">
+                <i class="fa fa-image mr-2"></i>Screenshots
+            </h2>
+        </div>
+        <div class="col-lg-12 my-2">
+            <h4 class="mt-2" style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                Salary Rule Categories</h4>
+            <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/screenshots/01payroll.png?65d6d2d" class="img-responsive img-thumbnail border" width="100%" height="auto">
+        </div>
+        <div class="col-lg-12 my-3">
+            <h4 class="mt-2" style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                Salary Rules</h4>
+            <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/screenshots/02payroll.png?65d6d2d" class="img-responsive img-thumbnail border" width="100%" height="auto">
+        </div>
+        <div class="col-lg-12 my-3">
+            <h4 class="mt-2" style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                Salary Structures</h4>
+            <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/screenshots/03payroll.png?65d6d2d" class="img-responsive img-thumbnail border" width="100%" height="auto">
+        </div>
+        <div class="col-lg-12 my-3">
+            <h4 class="mt-2" style="font-family:'Roboto', sans-serif !important; font-weight:600 !important; color:#282F33 !important; font-size:1.3rem !important">
+                Employee Payslips</h4>
+            <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/screenshots/04payroll.png?65d6d2d" class="img-responsive img-thumbnail border" width="100%" height="auto">
+        </div>
+    </div>
+    <!-- SUGGESTED PRODUCTS -->
+    <div class="row">
+        <div class="col-lg-12 d-flex flex-column justify-content-center" style="text-align:center; padding:2.5rem 1rem !important">
+            <h2 style="color:#212529 !important">Suggested Products</h2>
+            <hr style="border:3px solid #714B67 !important; background-color:#714B67 !important; width:80px !important; margin-bottom:2rem !important">
+            <div id="demo1" class="row carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="min-height:0px">
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/dynamic_accounts_report/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/dynamic_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/product_return_pos/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/product_return_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/product_approval_management/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/approval_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="min-height:0px">
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/mrp_work_order_print/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/print_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/list_view_sticky_header/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/list_view_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 mb16 mt16" style="float:left">
+                            <a href="https://apps.odoo.com/apps/modules/14.0/multiple_reference_per_product/" target="_blank">
+                                <div style="border-radius:10px">
+                                    <img class="img img-responsive center-block" style="border-top-left-radius:10px; border-top-right-radius:10px" src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/modules/multiple_ref_image.png?65d6d2d">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo1" data-slide="prev" style="width:35px; color:#000"> <span class="carousel-control-prev-icon"><i class="fa fa-chevron-left" style="font-size:24px"></i></span> </a> <a class="carousel-control-next" href="#demo1" data-slide="next" style="width:35px; color:#000">
+                    <span class="carousel-control-next-icon"><i class="fa fa-chevron-right" style="font-size:24px"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- END OF SUGGESTED PRODUCTS -->
+    <!-- OUR SERVICES -->
+    <section class="container" style="margin-top:6rem !important">
+        <div class="row">
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">
+                <h2 style="color:#212529 !important">Our Services</h2>
+                <hr style="border:3px solid #714B67 !important; background-color:#714B67 !important; width:80px !important; margin-bottom:2rem !important">
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#1dd1a1 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/cogs.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Customization</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#ff6b6b !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/wrench.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Implementation</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#6462CD !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/lifebuoy.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Support</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#ffa801 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/user.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Hire
+                    Odoo
+                    Developer</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#54a0ff  !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/puzzle.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Integration</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#6d7680 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/update.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Migration</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#786fa6 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/consultation.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Consultancy</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#f8a5c2 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/training.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Implementation</h6>
+            </div>
+            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center my-4">
+                <div class="d-flex justify-content-center align-items-center mx-3 my-3" style="background-color:#e6be26 !important; border-radius:15px !important; height:80px; width:80px">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/license.png?65d6d2d" class="img-responsive" height="48px" width="48px">
+                </div>
+                <h6 class="text-center" style="font-family:Montserrat, 'sans-serif' !important; font-weight:bold">
+                    Odoo
+                    Licensing Consultancy</h6>
+            </div>
+        </div>
+    </section>
+    <!-- END OF END OF OUR SERVICES -->
+    <!-- OUR INDUSTRIES -->
+    <section class="container" style="margin-top:6rem !important">
+        <div class="row">
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">
+                <h2 style="color:#212529 !important">Our Industries</h2>
+                <hr style="border:3px solid #714B67 !important; background-color:#714B67 !important; width:80px !important; margin-bottom:2rem !important">
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/trading-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Trading
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Easily procure
+                        and
+                        sell your products</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/pos-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        POS
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Easy
+                        configuration
+                        and convivial experience</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/education-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Education
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        A platform for
+                        educational management</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/manufacturing-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Manufacturing
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Plan, track and
+                        schedule your operations</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/ecom-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        E-commerce &amp; Website
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Mobile
+                        friendly,
+                        awe-inspiring product pages</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/service-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Service Management
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Keep track of
+                        services and invoice</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/restaurant-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Restaurant
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        Run your bar or
+                        restaurant methodically</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="my-4 d-flex flex-column justify-content-center" style="background-color:#f6f8f9 !important; border-radius:10px; padding:2rem !important; height:250px !important">
+                    <img src="//apps.odoocdn.com/apps/assets/15.0/hr_payroll_community/assets/icons/hotel-black.png?65d6d2d" class="img-responsive mb-3" height="48px" width="48px">
+                    <h5 style="font-family:Montserrat, sans-serif !important; color:#000 !important; font-weight:bold">
+                        Hotel Management
+                    </h5>
+                    <p style="font-family:Montserrat, sans-serif !important; font-size:0.9rem !important">
+                        An
+                        all-inclusive
+                        hotel management application</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END OF END OF OUR INDUSTRIES -->
+    <!-- FOOTER -->
+    <!-- Footer Section -->
+    <section class="container" style="margin:5rem auto 2rem">
+        <div class="row" style="max-width:1540px">
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">
+                <h2 style="color:#212529 !important">Need Help?</h2>
+                <hr style="border:3px solid #714B67 !important; background-color:#714B67 !important; width:80px !important; margin-bottom:2rem !important">
+            </div>
+        </div>
+        <!-- Contact Cards -->
+        <div class="row d-flex justify-content-center align-items-center" style="max-width:1540px; margin:0 auto 2rem auto">
+            <div class="col-lg-12" style="padding:0rem 3rem 2rem; border-radius:10px; margin-right:3rem">
+                <div class="row mt-4">
+                    <div class="col-lg-4">
+                        <a href="mailto:odoo@cybrosys.com" target="_blank" class="btn btn-block mb-2 deep_hover" style="text-decoration:none; background-color:#4d4d4d; color:#FFF; border-radius:4px"><i class="fa fa-envelope mr-2"></i>odoo@cybrosys.com</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <span href="https://api.whatsapp.com/send?phone=918606827707" target="_blank" class="btn btn-block mb-2 deep_hover" style="text-decoration:none; background-color:#25D366; color:#FFF; border-radius:4px"><i class="fa fa-whatsapp mr-2"></i>WhatsApp</span>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="mailto:info@cybrosys.com" target="_blank" class="btn btn-block deep_hover" style="text-decoration:none; background-color:#4d4d4d; color:#FFF; border-radius:4px"><i class="fa fa-envelope mr-2"></i>info@cybrosys.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Contact Cards -->
+    </section>
+    <!-- Footer -->
+    <section class="oe_container" style="padding:2rem 3rem 1rem">
+        <div class="row" style="max-width:1540px; margin:0 auto; margin-right:3rem">
+            <!-- Logo -->
+            <div class="col-lg-12 d-flex justify-content-center align-items-center" style="margin-top:3rem">
+                <img src="https://www.cybrosys.com/images/logo.png" width="200px" height="auto">
+            </div>
+            <!-- End of Logo -->
+            <div class="col-lg-12">
+                <hr style="margin-top:3rem; height:2px; border-style:none">
+                <!-- End of Footer Section -->
+            </div>
+        </div>
+    </section>
+    <!-- END OF FOOTER -->
+</div>
+            </div>
+        </div>
+                            </div>
+                    </div>
+                    <div class="container">
+        <section id="loempia-comments" class="mb48 loempia_comments">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 mb32 css_editable_mode_hidden">
+                    <h2 class="mt64 fw_extralight">
+                            Please <a href="/web/login?redirect=/apps/modules/15.0/hr_payroll_community"><b>log in</b></a> to comment on this module
+                    </h2>
+                    <div class="mb32">
+                        <ul>
+                            <li>The author can leave a single reply to each comment.</li>
+                            <li>This section is meant to ask simple questions or leave a rating. Every report of a problem experienced while using the module should be addressed to the author directly (refer to the following point).</li>
+                            <li>
+                                    If you want to start a discussion with the author, please use the developer contact information. They can usually be found in the <a href="#module-description">description</a>.
+                            </li>
+                        </ul>
+                    </div>
+                    <form id="comment" action="/apps/rating">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="mt4 mb8"><input type="number" name="rating" class="rating mb4" min="1" max="5" value="0"/><span id="error_rating" class="text-danger d-none">Please choose a rating from 1 to 5 for this module.</span></div>
+                                <textarea rows="1" name="subject" class="form-control mb8" placeholder="Write your overall feeling..." disabled="True"></textarea>
+                                <input name="module_id" type="hidden" value="106661"/>
+                                <textarea rows="8" name="comment" class="form-control o_wysiwyg_loader" placeholder="Write a detailed feedback..." disabled="True"></textarea>
+                                <button type="submit" id="post_button" class="btn btn-primary mt16 a-submit disabled" disabled="diasbled">Post</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+                    </div>
+                    <div id="report_banneer_state" class="o_report_banneer"></div>
+            </div>
+            <script>
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                 ga('create', 'UA-52174891-1', 'auto');
+                 ga('send','pageview');
+             </script>
+                </main>
+                <footer id="bottom" data-anchor="true" data-name="Footer" class="o_footer o_colored_level o_cc  o_footer_slideout">
+                    <div id="footer" class="container o_not_editable ">
+                <span class="o_logo o_logo_inverse d-block mx-auto o_footer_logo my-5"></span>
+                <div class="row">
+                    <div class="col-12 col-lg-7 col-xl-6">
+                        <div class="row">
+                            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                                <div class="row">
+                                    <div class="col-6 col-md-12">
+                                        <span class="o_footer_title">Community</span>
+                                        <ul class="o_footer_links list-unstyled">
+                                            <li><a href="/slides">Tutorials</a></li>
+                                            <li><a href="/page/docs">Documentation</a></li>
+                                            <li><a href="/forum/help-1">Forum</a></li>
+                                            <li><a href="/page/odoo-community">Mailing Lists</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <span class="o_footer_title">Open Source</span>
+                                        <ul class="o_footer_links list-unstyled">
+                                            <li><a href="/page/download">Download</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                                            <li><a href="https://runbot.odoo.com/">Runbot</a></li>
+                                            <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <span class="o_footer_title">Services</span>
+                                <ul class="o_footer_links list-unstyled">
+                                    <li><a href="https://www.odoo.sh">Odoo.sh Hosting</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/help">Support</a></li>
+                                    <li><a href="https://upgrade.odoo.com">Upgrade</a></li>
+                                    <li><a href="/page/education-program">Education</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/accounting-firms">Find an Accountant</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/partners">Find a Partner</a></li>
+                                    <li><a href="/page/become-a-partner">Become a Partner</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-md-4 mb64">
+                                <span class="o_footer_title">About us</span>
+                                <ul class="o_footer_links list-unstyled">
+                                    <li><a href="/page/about-us">Our company</a></li>
+                                    <li><a href="/contactus">Contact us</a></li>
+                                    <li><a href="/jobs">Jobs</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/events">Events</a></li>
+                                    <li><a href="/blog">Blog</a></li>
+                                    <li><a href="/blog/6">Customers</a></li>
+                                    <li><a href="/blog/8">Partners</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/legal">Legal</a></li>
+                                    <li><a href="/privacy">Privacy</a></li>
+                                    <li><a href="/security">Security</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 col-xl-5 offset-xl-1">
+                        <div class="d-flex align-items-center justify-content-between">
+                        </div>
+                        <hr class="mt-3 mb-4"/>
+                        <p class="small text-muted">Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.</p>
+                        <p class="small text-muted mb-4">Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.</p>
+                        <div class="o_footer_social_media">
+                            <a href="/web/about/facebook" class="mr-3"><i class="fa fa-fw fa-facebook"></i></a>
+                            <a href="/web/about/twitter" class="mr-3"><i class="fa fa-fw fa-twitter"></i></a>
+                            <a href="/web/about/linkedin" class="mr-3"><i class="fa fa-fw fa-linkedin"></i></a>
+                            <a href="/web/about/github" class="mr-3"><i class="fa fa-fw fa-github"></i></a>
+                            <a href="/web/about/instagram" class="mr-3"><i class="fa fa-fw fa-instagram"></i></a>
+                            <a href="mailto:info@odoo.com" class=""><i class="fa fa-fw fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="o_footer_copyright o_not_editable">
+                <div class="container py-3 mt-4">
+                    <a class="small" href="/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+                </div>
+            </div>
+        </footer>
+            </div>
+            <div id="o_live_modal" class="modal fade" tabindex="-1" role="dialog" contentEditable="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="mt8"><b></b> on YouTube</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span title="Close" class="fa fa-times"></span></button>
+                            <p class="text-black">
+                                <b>1.</b> Use the live chat to ask your questions.<br/>
+                                <b>2.</b> The operator answers within a few minutes.
+                            </p>
+                        </div>
+                        <div class="modal-body bg-gray-lighter">
+                            <img src="//apps.odoocdn.com/openerp_website/static/src/img/2016/live-support/info.gif" class="img img-fluid" alt="" loading="lazy"/>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary btn-lg" target="_blank" href="">Watch now<i class="fa fa-1x fa-long-arrow-right ml8"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+        </html>

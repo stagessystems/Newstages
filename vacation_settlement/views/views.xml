@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="vacation_settlement_action" model="ir.actions.act_window">
+            <field name="context">{'default_is_settlement':True,'default_number_of_days': 1}</field>
+            <field name="domain">[('is_settlement','=', True)]</field>
+            <field name="name">Settlement Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.leave</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="settlement_menu_categ" name="Settlement Request" parent="hr_holidays.menu_hr_holidays_approvals" action="vacation_settlement_action" sequence="3"/>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="vacation_settlement_inhert_from" model="ir.ui.view">
+            <field name="name">hr.leave</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+            <field name="arch" type="xml">
+
+                <header>
+                    <button string="Compute" name="calculate_input_line_ids" type="object" class="oe_highlight" attrs="{'invisible':[('is_settlement','=', False)]}" />
+                    <button string="Process Payment" name="action_leave_settlement_payslip" attrs="{'invisible':[('state','!=', 'validate')]}" type="object" class="oe_highlight"/>
+
+                </header>
+<!--    <div class="oe_button_box" name="button_box">-->
+<!--                        <button class="oe_stat_button" name="open_related_payments" type="object" icon="fa-tasks" attrs="{'invisible': [('payment_count', '=', 0)]}">-->
+<!--                            <field name="payment_count" widget="statinfo" string="Payments"/>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                <xpath expr="//field[@name='number_of_days']" position="replace">-->
+<!--                    <field name="number_of_days" context="{'default_number_of_days': 1}"/>-->
+<!--                </xpath>-->
+                <!-- <field name="number_of_days" position="replace">
+                    <field name="n_days"/>
+                </field> -->
+                <xpath expr="//field[@name='name']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <group colspan="4">
+                        <field name="with_visa" attrs="{'invisible':[('is_settlement','=', False)]}" />
+                        <field name="unpaid_days" attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="n_days" attrs="{'invisible':[('is_settlement','=', False)]}" />
+                        <field name="is_settlement" invisible="1"/>
+                        <field name="first_day_of_work" attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="last_day_of_work"  attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="days_of_work"  attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="accrual_balance"  attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="effective_balance"  attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="amount" attrs="{'invisible':[('is_settlement','=', False)]}"/>
+                        <field name="to_word" attrs="{'invisible':[('is_settlement','=', False)]}"/>
+
+                    </group>
+                </xpath>
+
+                <!-- <xpath expr="//field[@name='holiday_type']" position="after"> -->
+                <field name="holiday_type" position="after">
+                    <notebook attrs="{'invisible':[('is_settlement','=', False)]}">
+                        <page name="settlement_deduction" string="Settlement Deductions">
+                            <group>
+                                <field nolabel="1"  name="settlement_deductions_ids"  attrs="{'invisible':[('is_settlement','=', False)]}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount" sum="Total Amount"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="settlement_deserved" string="Settlement Benefits">
+                            <group>
+                                <field nolabel="1"  name="settlement_deserved_ids"  attrs="{'invisible':[('is_settlement','=', False)]}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount" sum="Total Amount"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+
+                        <page name="settlement_payments" string="Payments">
+                            <group>
+                                <field nolabel="1"  name="related_payment_ids"  attrs="{'invisible':[('is_settlement','=', False)]}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="state"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                        <!-- <field name="net_wage"/> -->
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="settlement_ticket_list">
+      <field name="name">Ticket value list</field>
+      <field name="model">settlement.conf.ticket</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="country_id"/>
+          <field name="ticket"/>
+          
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="settlement_ticket_action">
+      <field name="name">Ticket value</field>
+      <field name="res_model">settlement.conf.ticket</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+        <menuitem id="settlement_conf_menu" name="Ticket config" parent="hr_holidays.menu_hr_holidays_configuration" action="settlement_ticket_action"/>
+
+
+
+    </data>
+</odoo>

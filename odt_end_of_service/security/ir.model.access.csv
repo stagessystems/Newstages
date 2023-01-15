@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_end_of_service_type,access_end_of_service_type,model_end_of_service_type,,1,1,1,1
+access_end_of_service_type_line,access_end_of_service_type_line,model_end_of_service_type_line,,1,1,1,1
+access_end_of_service_salary_items,access_end_of_service_salary_items,model_end_of_service_salary_items,,1,1,1,1
+access_hr_termination,access_hr_termination,model_hr_termination,,1,1,1,1
+access_hr_termination_eos_line,access_hr_termination_eos_line,model_hr_termination_eos_line,,1,1,1,1

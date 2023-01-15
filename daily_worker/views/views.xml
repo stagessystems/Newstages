@@ -1,0 +1,152 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="daily_worker_list">
+      <field name="name">worker list</field>
+      <field name="model">worker</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="id_no"/>
+          <field name="cost"/>
+          <field name="group_id"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="daily_worker_form">
+      <field name="name">worker form</field>
+      <field name="model">worker</field>
+      <field name="arch" type="xml">
+        <form>
+
+          
+          <sheet>
+          <div class="oe_button_box" name="button_box">
+          <button type="object" class="oe_stat_button" id="get_attendances" icon="fa-pencil-square-o" name="get_attendances" string="Worker Attendance" context="{'default_partner_id': active_id}">
+                    </button>
+          <button type="object" class="oe_stat_button" id="partner_ledger_button" icon="fa-pencil-square-o" name="open_partner_ledger" string="Partner Ledger" context="{'default_partner_id': active_id}">
+                    </button>
+          </div>
+          <group>
+          <group>
+            <h1>
+              <field name="name"/>
+            </h1>
+            <field name="id_no"/>
+            <field name="cost" string="Cost per hour"/>
+            <field name="group_id"/>
+            <field name="company_id"/>
+          </group>
+          </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="daily_worker_action_window">
+      <field name="name">worker window</field>
+      <field name="res_model">worker</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="daily_worker_attendance_list">
+      <field name="name">worker Attendance list</field>
+      <field name="model">worker.attendance</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="worker_id"/>
+          <field name="chick_in"/>
+          <field name="chick_out"/>
+          <field name="hours"/>
+          <field name="cost"/>
+          <field name="deduction"/>
+          <field name="total"/>
+          <field name="state"/>
+
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="daily_worker_attendance_form">
+      <field name="name">worker attendance form</field>
+      <field name="model">worker.attendance</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="confirm" type="object" string="Confirm"  attrs="{'invisible': [('state', '!=', 'draft') ]}" />
+            <button name="action_register_payment" type="object" string="Register Payment" attrs="{'invisible': [('state', '!=', 'confirm') ]}" />
+            <field name="state" widget="statusbar" />
+          </header>
+          <sheet>
+          <group>
+            <group>
+              <field name="worker_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+              <field name="chick_in" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="chick_out" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="hours" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              
+              <field name="company_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+            </group>
+            <group>
+              
+              <field name="cost" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="deduction" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="total" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="move_id" readonly="1" />
+            </group>
+          </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="daily_worker_attendance_action_window">
+      <field name="name">worker window</field>
+      <field name="res_model">worker.attendance</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="daily_worker.action_server">
+      <field name="name">daily_worker server</field>
+      <field name="model_id" ref="model_daily_worker_daily_worker"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Daily Worker" id="daily_worker_menu_root" web_icon="daily_worker,static/description/icon.png"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Workers" id="daily_worker.menu_1" parent="daily_worker_menu_root"/>
+    <!-- <menuitem name="Menu 2" id="daily_worker.menu_2" parent="daily_worker.menu_root"/> -->
+
+    <!-- actions -->
+    <menuitem name="Attendance" id="daily_worker_attendance" parent="daily_worker.menu_1"
+              action="daily_worker_attendance_action_window"/>
+    <menuitem name="Worker" id="daily_worker.menu_1_list" parent="daily_worker.menu_1"
+              action="daily_worker_action_window"/>
+    <!-- <menuitem name="Server to list" id="daily_worker" parent="daily_worker.menu_2"
+              action="daily_worker.action_server"/> -->
+
+  </data>
+</odoo>

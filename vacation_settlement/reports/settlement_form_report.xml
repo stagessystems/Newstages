@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paper_format_settlement_leave" model="report.paperformat">
+            <field name="name">Settlement Report A4</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- QWeb Reports -->
+        <!-- NAME & FILE_NAME should be the same -->
+        <report
+                id="vacation_settlement_form_report"
+                model="hr.leave"
+                report_type="qweb-pdf"
+                string="Leave Settlement Form"
+                name="vacation_settlement.vacation_settlement_report"
+                file="vacation_settlement.vacation_settlement_report"
+                paperformat="vacation_settlement.paper_format_settlement_leave"
+
+        />
+
+        <template id="vacation_settlement_report">
+
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <!-- <t t-call="report.external_layout"> -->
+                    <div class="page" style="direction: rtl;">
+                        <h3 style="font-family: dubai-bold;text-decoration-line: underline;text-align:center;">تسوية إجازة سنوية</h3>
+                         <style>
+* {
+  box-sizing: border-box;
+}
+
+.page{
+font-family: 'dubai-medium';
+font-size: 12px;
+
+}
+
+table.customTable {
+width: 100%;
+background-color: #FFFFFF;
+border-collapse: collapse;
+border-width: 2px;
+border-color: #000000;
+border-style: solid;
+color: #000000;
+margin-top: 5px;
+}
+
+table.customTable td, table.customTable th {
+border-width: 2px;
+border-color: #000000;
+border-style: solid;
+padding: 5px;
+}
+
+table.customTable thead {
+background-color: #D1D1D1;
+}
+
+
+</style>
+                        <link rel="stylesheet" type="text/css" href="https://dev199.com/style.css"/>
+                        <link rel="stylesheet" type="text/css" href="//www.fontstatic.com/f=dubai-bold,dubai-medium,dubai-medium" />
+
+                        <t t-foreach="docs" t-as="o">
+                            <table class="customTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right" colspan="6">اﻷسم : <span style="text-align:text-right" t-field="o.employee_id.name"/> </th>
+                                        <th class="text-right" colspan="6">مستحقات الإجازة السنوية</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="text-right" colspan="6">رقم الهوية : <span style="text-align:text-right" t-field="o.employee_id.identification_id"/> </th>
+                                        <th class="text-right" colspan="6">مباشرة العمل بعد آخر إجازة : <span style="text-align:text-right" t-field="o.employee_id.last_effective_date"/> </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right" colspan="6">الجنسية : <span style="text-align:text-right" t-field="o.employee_id.country_id.name"/> </th>
+                                        <th class="text-right" colspan="6">آخر يوم عمل : <span style="text-align:text-right" t-field="o.last_day_of_work"/> </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right" colspan="6">الوظيفة : <span style="text-align:text-right" t-field="o.employee_id.job_id.name"/> </th>
+                                        <th class="text-right" colspan="6">عدد أيام العمل : <span style="text-align:text-right" t-field="o.days_of_work"/> </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right" colspan="6">الفرع : <span style="text-align:text-right" t-field="o.employee_id.work_location"/> </th>
+                                        <th class="text-right" colspan="6">رصيد اﻹجازات : <span style="text-align:text-right" t-esc="'%.2f'% o.number_of_days" /> يوم </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right" colspan="6">اﻹجازة السنوية : <span style="text-align:text-right" t-field="o.employee_id.annual_leave_days"/> </th>
+                                        <th class="text-right" colspan="6">اﻹجازة المستحقة : <span style="text-align:text-right" t-esc="'%.2f'% o.number_of_days"/> يوم </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="customTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right" colspan="6">الراتب اﻷساسي </th>
+                                        <th class="text-right" colspan="6">بدل السكن</th>
+                                        <th class="text-right" colspan="6">بدلات أخرى </th>
+                                        <th class="text-right" colspan="6">إجمالي راتب التسوية</th>
+                                        <th class="text-right" colspan="6">إجمالي الراتب العام </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <t t-set="leave_salary" t-value="(o.employee_id.contract_id.wage)"/>
+                                        <t t-set="earned_amount" t-value="(leave_salary/30) * o.effective_balance"/>
+                                        <td class="text-right" colspan="6"><span style="text-align:text-right" t-esc="'%.2f'% o.employee_id.contract_id.basic_salary"/></td>
+                                        <td class="text-right" colspan="6"><span style="text-align:text-right" t-esc="'%.2f'% o.employee_id.contract_id.housing_allowance"/></td>
+                                        <td class="text-right" colspan="6"><span style="text-align:text-right" t-esc="'%.2f'% o.employee_id.contract_id.other_allowance"/></td>
+                                        <td class="text-right" colspan="6"><span style="text-align:text-right" t-esc="'%.2f'% leave_salary"/></td>
+                                        <td class="text-right" colspan="6"><span style="text-align:text-right" t-esc="'%.0f'% o.employee_id.contract_id.wage"/></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <t t-set="i" t-value="0"/>
+                            <t t-set="dl" t-value="o.settlement_deductions_ids"/>
+                            <t t-set="bl" t-value="o.settlement_deserved_ids"/>
+                            <t t-set="total_deductions" t-value="0"/>
+                            <t t-set="total_earnings" t-value="0"/>
+
+                            <t t-foreach="[0, 1, 2, 3, 4,5]" t-as="item">
+                                 <t t-set="total_earnings" t-value="total_earnings + bl[item].amount"/>
+                                 <t t-set="total_deductions" t-value="total_deductions + dl[item].amount"/>
+                            </t>
+                            <t t-set="total_net" t-value="total_earnings - total_deductions"/>
+                            <div style="margin-left:-5px; margin-right:-5px;">
+                              <div style="width:50%; float: left; padding: 5px;">
+                            <table class="customTable" >
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" colspan="1">ريال </th>
+                                        <th class="text-right" colspan="5"> البيـــان</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="dl" t-as="line">
+                                        <tr>
+                                        
+                                        <td class="text-center" colspan="1"><span style="text-align:text-right" t-esc="'%.2f'% line.amount"/></td>
+                                        <td class="text-right" colspan="5"><span style="text-align:text-right" t-esc="line.name"/></td>
+                                    </tr>
+                                    </t>
+                                    </tbody>
+                            </table>
+                            </div>
+                            <div style="width:50%; padding: 5px;">
+                            <table class="customTable" >
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" colspan="1">ريال </th>
+                                        <th class="text-right" colspan="5"> البيـــان</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="bl" t-as="line">
+                                        <tr>
+                                        
+                                        <td class="text-center" colspan="1"><span style="text-align:text-right" t-esc="'%.2f'% line.amount"/></td>
+                                        <td class="text-right" colspan="5"><span style="text-align:text-right" t-esc="line.name"/></td>
+                                    </tr>
+                                    </t>
+                                    </tbody>
+                            </table>
+                        </div>
+                        </div>
+                                    
+                                    
+
+                            <table class="customTable">
+
+                                <tbody>
+                                    <tr rowspan="2">
+                                        <td class="text-center" colspan="2" style="background-color: #D1D1D1;">الصافي المستحق</td>
+                                        <td class="text-center" colspan="8">له مبلغ (<span t-esc="'%.2f'%total_net"/>) <span t-esc="o.to_word"/> ريال فقط لاغير </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table" style="margin-top: 5px;border-width: 4px;border-color: #000000;border-style: double;color: #000000;">
+
+                                <tbody>
+                                    <tr rowspan="2">
+                                        <td class="text-center" colspan="4">له مبلغ (<span t-esc="'%.2f'%total_net"/>) <span t-esc="o.to_word"/> ريال فقط لاغير </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center" width="33%">المستلم </td>
+                                        <td class="text-center" width="33%">التاريخ </td>
+                                        <td class="text-center" width="34%">التوقيع </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center" width="33%"></td>
+                                        <td class="text-center" width="33%"></td>
+                                        <td class="text-center" width="34%"></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center" width="25%">مسؤول شؤون الموظفين </td>
+                                        <td class="text-center" width="25%">محاسب شؤون الموظفين</td>
+                                        <td class="text-center" width="25%">مدير عام شؤون الموظفين </td>
+                                        <td class="text-center" width="25%">المدير العام</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>
