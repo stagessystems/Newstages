@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Inherit Form View to Modify it -->
+  <record id="crossovered_budget_view_form_inherit_id" model="ir.ui.view">
+      <field name="name">crossovered.budget inherit</field>
+      <field name="model">crossovered.budget</field>
+      <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+      <field name="arch" type="xml">
+           <xpath expr="//field[@name='crossovered_budget_line']//tree//field[@name='analytic_account_id']" position="after">
+              <!-- Add your fields or attributes here -->
+              <field name="department_id"/>
+          </xpath>
+
+      </field>
+  </record>
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="rfq_control_custom.list">
+      <field name="name">rfq_control_custom list</field>
+      <field name="model">rfq_control_custom.rfq_control_custom</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="rfq_control_custom.action_window">
+      <field name="name">rfq_control_custom window</field>
+      <field name="res_model">rfq_control_custom.rfq_control_custom</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="rfq_control_custom.action_server">
+      <field name="name">rfq_control_custom server</field>
+      <field name="model_id" ref="model_rfq_control_custom_rfq_control_custom"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="rfq_control_custom" id="rfq_control_custom.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="rfq_control_custom.menu_1" parent="rfq_control_custom.menu_root"/>
+    <menuitem name="Menu 2" id="rfq_control_custom.menu_2" parent="rfq_control_custom.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="rfq_control_custom.menu_1_list" parent="rfq_control_custom.menu_1"
+              action="rfq_control_custom.action_window"/>
+    <menuitem name="Server to list" id="rfq_control_custom" parent="rfq_control_custom.menu_2"
+              action="rfq_control_custom.action_server"/>
+-->
+
+</odoo>
