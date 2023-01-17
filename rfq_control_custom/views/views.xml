@@ -14,6 +14,21 @@
       </field>
   </record>
 
+    Inherit Form View to Modify it
+   <record id="rfq_control_custom_product_form_inherit_id" model="ir.ui.view">
+       <field name="name">product.template.product.form.inherit</field>
+       <field name="model">product.template</field>
+       <field name="inherit_id" ref="account.product_template_form_view"/>
+       <field name="arch" type="xml">
+
+           <xpath expr="//page[@name='invoicing']//field[@name='property_account_expense_id']" position="attributes">
+               <!-- Add your fields or attributes here -->
+                <attribute name="required">1</attribute>
+           </xpath>
+
+       </field>
+   </record>
+
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="rfq_control_custom.list">
