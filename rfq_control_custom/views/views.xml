@@ -14,7 +14,7 @@
       </field>
   </record>
 
-    Inherit Form View to Modify it
+
    <record id="rfq_control_custom_product_form_inherit_id" model="ir.ui.view">
        <field name="name">product.template.product.form.inherit</field>
        <field name="model">product.template</field>
