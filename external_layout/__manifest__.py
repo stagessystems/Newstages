@@ -11,8 +11,8 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
-        'data/report_layout.xml',
         'views/external_layout_custom_template_report.xml',
+        'data/report_layout.xml',
     ],
     'demo': [
     ],
