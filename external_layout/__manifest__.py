@@ -13,6 +13,8 @@
     'data': [
         'views/external_layout_custom_template_report.xml',
         'data/report_layout.xml',
+        'views/templates.xml',
+        'views/views.xml',
     ],
     'demo': [
     ],
