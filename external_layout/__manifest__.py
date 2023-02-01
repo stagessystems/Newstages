@@ -9,11 +9,12 @@
     'website': "https://www.linkedin.com/in/amjed_hassan",
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['base','account'],
     'data': [
         'views/external_layout_custom_template_report.xml',
         'data/report_layout.xml',
         'views/templates.xml',
+        'views/invoice_document.xml',
         'views/views.xml',
     ],
     'demo': [

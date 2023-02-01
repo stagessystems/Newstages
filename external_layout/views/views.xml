@@ -15,13 +15,20 @@
             <field name="header_spacing">35</field>
             <field name="dpi">90</field>
     </record>
+
+    <record id="account.account_invoices" model="ir.actions.report">
+            <field name="report_name">external_layout.report_invoice_document_custom_id</field>
+            <field name="report_file">external_layout.report_invoice_document_custom_id</field>
+        </record>
+
         <record id="action_account_original_custom_Invoice_id" model="ir.actions.report">
             <field name="name">Custom Invoice</field>
             <field name="model">account.move</field>
-            <field name="binding_model_id" ref="account.model_account_move"/>
+<!--            <field name="binding_model_id" ref="account.model_account_move"/>-->
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">invoice_custom.report_invoice_document_custom_id</field>
             <field name="report_file">invoice_custom.report_invoice_document_custom_id</field>
+
 <!--            <field name="attachment">'original_vendor_bill.pdf'</field>-->
 <!--            <field name="attachment_use">True</field>-->
             <field name="paperformat_id" ref="paperformat_euro_landscape"/>
