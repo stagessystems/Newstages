@@ -3,8 +3,11 @@
     <!--    <data>-->
     <template id="report_invoice_document_custom_id">
         <t t-call="web.basic_layout">
-            <t t-foreach="docs" t-as="o">
 
+            <t t-foreach="docs" t-as="o">
+                 <div class="article" t-attf-data-oe-model="account.move" t-attf-data-oe-id="{{o.id}}">
+                </div>
+                <div class="page">
                 <style>
                     .row_bl_gr {
                     margin-right: 5px;
@@ -119,10 +122,9 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <!--                                            <strong>IIINNNFFFOOO</strong>-->
-                                       <h3>
+                                       <h5>
                                                 <span class="font-style" style="padding-left: 10px;" t-field="o.partner_id"/>
-                                       </h3>
+                                       </h5>
 
                                     </td>
                                 </tr>
@@ -168,13 +170,11 @@
 
                                     </td>
                                 </tr>
-                                <!--                                    <tr><td>Website</td></tr>-->
                             </table>
                         </div>
                     </div>
                     <div class="col-4 text-center row_bl_gr">
                         <div class="row">
-                            <!--                                <div class="col-12" style="background-color: #d5d4d9;"></div>-->
                             <table width="100%">
                                 <tr>
                                     <td style="background-color: #d5d4d9;color: #d5d4d9;">
@@ -197,7 +197,6 @@
                                         <span t-field="o.invoice_date"/>
                                     </td>
                                 </tr>
-                                <!--                                    <tr><td>Website</td></tr>-->
                             </table>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -214,13 +213,11 @@
                                         <span t-field="o.invoice_date"/>
                                     </td>
                                 </tr>
-                                <!--                                    <tr><td>Website</td></tr>-->
                             </table>
                         </div>
                     </div>
                     <div class="col-4 text-center">
                         <div class="row">
-                            <!--                                <div class="col-12" style="background-color: #2c3039;"></div>-->
                             <table width="100%">
                                 <tr>
 
@@ -248,7 +245,6 @@
 
                                     </td>
                                 </tr>
-                                <!--                                    <tr><td>Website</td></tr>-->
                             </table>
                         </div>
                         <div class="row" style="margin-top: 30px;">
@@ -488,8 +484,12 @@
 
                    <span style="position:absolute;background-color:black;max-height:-20px;width:100%;bottom:-140px;">.</span>
                 </div>
+                     <div style="page-break-after: always;"><br/></div>
 
+
+                 </div>
             </t>
+
         </t>
     </template>
 
@@ -524,31 +524,7 @@
                 </strong>
             </td>
         </tr>
-        <!--            </table>-->
-        <!--            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">-->
-        <!--                <tr class="border-black o_subtotal">-->
-        <!--                    <td><strong t-esc="subtotal['name']"/></td>-->
 
-        <!--                    <td class="text-right">-->
-        <!--                        <span-->
-        <!--                            t-att-class="oe_subtotal_footer_separator"-->
-        <!--                            t-esc="subtotal['formatted_amount']"-->
-        <!--                        />-->
-        <!--                    </td>-->
-        <!--                </tr>-->
-
-        <!--                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>-->
-        <!--                <t t-call="account.tax_groups_totals"/>-->
-        <!--            </t>-->
-
-        <!--Total amount with all taxes-->
-        <!--            <tr class="border-black o_total">-->
-        <!--                <td><strong>Total</strong></td>-->
-        <!--                <td class="text-right">-->
-        <!--                    <span t-esc="tax_totals['formatted_amount_total']"/>-->
-        <!--                </td>-->
-        <!--            </tr>-->
     </template>
 
-    <!--    </data>-->
 </odoo>

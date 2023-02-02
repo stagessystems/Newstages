@@ -19,6 +19,11 @@
     <record id="account.account_invoices" model="ir.actions.report">
             <field name="report_name">external_layout.report_invoice_document_custom_id</field>
             <field name="report_file">external_layout.report_invoice_document_custom_id</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field>
+            <field name="binding_model_id" ref="model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id" eval="[(4, ref('account.group_account_invoice')),(4, ref('account.group_account_readonly'))]"/>
         </record>
 
         <record id="action_account_original_custom_Invoice_id" model="ir.actions.report">
