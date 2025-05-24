@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="discount.list">
+      <field name="name">discount list</field>
+      <field name="model">discount.discount</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="discount.action_window">
+      <field name="name">discount window</field>
+      <field name="res_model">discount.discount</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="discount.action_server">
+      <field name="name">discount server</field>
+      <field name="model_id" ref="model_discount_discount"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="discount" id="discount.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="discount.menu_1" parent="discount.menu_root"/>
+    <menuitem name="Menu 2" id="discount.menu_2" parent="discount.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="discount.menu_1_list" parent="discount.menu_1"
+              action="discount.action_window"/>
+    <menuitem name="Server to list" id="discount" parent="discount.menu_2"
+              action="discount.action_server"/>
+-->
+  </data>
+</odoo>

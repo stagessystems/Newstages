@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="export_sa_zatca_ubl_extensions">
+            <ext:UBLExtensions xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                               xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+                <ext:UBLExtension>
+                    <ext:ExtensionURI>urn:oasis:names:specification:ubl:dsig:enveloped:xades</ext:ExtensionURI>
+                    <ext:ExtensionContent>
+                        <sig:UBLDocumentSignatures
+                                xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
+                                xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"
+                                xmlns:sig="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2">
+                            <sac:SignatureInformation>
+                                <cbc:ID>urn:oasis:names:specification:ubl:signature:1</cbc:ID>
+                                <sbc:ReferencedSignatureID>urn:oasis:names:specification:ubl:signature:Invoice
+                                </sbc:ReferencedSignatureID>
+                                <ds:Signature Id="signature" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                    <ds:SignedInfo>
+                                        <ds:CanonicalizationMethod
+                                                Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+                                        <ds:SignatureMethod
+                                                Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/>
+                                        <ds:Reference Id="invoiceSignedData" URI="">
+                                            <ds:Transforms>
+                                                <ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                    <ds:XPath>not(//ancestor-or-self::ext:UBLExtensions)</ds:XPath>
+                                                </ds:Transform>
+                                                <ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                    <ds:XPath>not(//ancestor-or-self::cac:Signature)</ds:XPath>
+                                                </ds:Transform>
+                                                <ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                    <ds:XPath>
+                                                        not(//ancestor-or-self::cac:AdditionalDocumentReference[cbc:ID='QR'])
+                                                    </ds:XPath>
+                                                </ds:Transform>
+                                                <ds:Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+                                            </ds:Transforms>
+                                            <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                            <!-- b64encoded SHA256 digest of document -->
+                                            <ds:DigestValue/>
+                                        </ds:Reference>
+                                        <ds:Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties"
+                                                      URI="#xadesSignedProperties">
+                                            <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                            <ds:DigestValue/>
+                                        </ds:Reference>
+                                    </ds:SignedInfo>
+                                    <ds:SignatureValue/>
+                                    <ds:KeyInfo>
+                                        <ds:X509Data>
+                                            <ds:X509Certificate/>
+                                        </ds:X509Data>
+                                    </ds:KeyInfo>
+                                    <ds:Object>
+                                        <xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+                                                                    Target="signature">
+                                            <xades:SignedProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+                                                                    Id="xadesSignedProperties">
+                                                <xades:SignedSignatureProperties>
+                                                    <xades:SigningTime/>
+                                                    <xades:SigningCertificate>
+                                                        <xades:Cert>
+                                                            <xades:CertDigest>
+                                                                <ds:DigestMethod
+                                                                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                                        Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                                                <ds:DigestValue
+                                                                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+                                                            </xades:CertDigest>
+                                                            <xades:IssuerSerial>
+                                                                <ds:X509IssuerName
+                                                                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+                                                                <ds:X509SerialNumber
+                                                                        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+                                                            </xades:IssuerSerial>
+                                                        </xades:Cert>
+                                                    </xades:SigningCertificate>
+                                                </xades:SignedSignatureProperties>
+                                            </xades:SignedProperties>
+                                        </xades:QualifyingProperties>
+                                    </ds:Object>
+                                </ds:Signature>
+                            </sac:SignatureInformation>
+                        </sig:UBLDocumentSignatures>
+                    </ext:ExtensionContent>
+                </ext:UBLExtension>
+            </ext:UBLExtensions>
+        </template>
+
+        <template id="export_sa_zatca_ubl_signed_properties">
+            <xades:SignedProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Id="xadesSignedProperties">
+                <xades:SignedSignatureProperties>
+                    <xades:SigningTime t-esc="signing_time"/>
+                    <xades:SigningCertificate>
+                        <xades:Cert>
+                            <xades:CertDigest>
+                                <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                 Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                <ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                t-esc="public_key_hashing"/>
+                            </xades:CertDigest>
+                            <xades:IssuerSerial>
+                                <ds:X509IssuerName xmlns:ds="http://www.w3.org/2000/09/xmldsig#" t-esc="issuer_name"/>
+                                <ds:X509SerialNumber xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                     t-esc="serial_number"/>
+                            </xades:IssuerSerial>
+                        </xades:Cert>
+                    </xades:SigningCertificate>
+                </xades:SignedSignatureProperties>
+            </xades:SignedProperties>
+        </template>
+
+        <template id="ubl_21_Invoice_zatca">
+            <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:UBLVersionID t-esc="vals.get('ubl_version_id')"/>
+                <cbc:CustomizationID t-esc="vals.get('customization_id')"/>
+                <cbc:ProfileID t-esc="vals.get('profile_id')"/>
+                <cbc:ID t-esc="vals.get('id')"/>
+                <cbc:UUID t-esc="invoice.l10n_sa_uuid"/>
+                <cbc:IssueDate t-esc="vals['issue_date'].strftime('%Y-%m-%d')"/>
+                <cbc:IssueTime t-esc="vals['issue_date'].strftime('%H:%M:%S')"/>
+                <cbc:DueDate
+                        t-if="invoice.move_type == 'out_invoice'"
+                        t-esc="vals.get('due_date')"/>
+                <cbc:InvoiceTypeCode t-att="vals['invoice_type_code_attrs']" t-esc="vals['invoice_type_code']"/>
+                <t t-foreach="vals.get('note_vals', [])" t-as="note">
+                    <cbc:Note t-esc="note"/>
+                </t>
+                <cbc:DocumentCurrencyCode t-att="vals.get('document_currency_code_attrs', {})"
+                        t-esc="invoice.currency_id.name.upper()"/>
+                <cbc:TaxCurrencyCode t-esc="invoice.company_currency_id.name"/>
+                <cbc:BuyerReference t-esc="vals.get('buyer_reference')"/>
+                <t t-foreach="vals.get('invoice_period_vals_list', [])" t-as="foreach_vals">
+                    <cac:InvoicePeriod>
+                        <cbc:StartDate t-esc="foreach_vals.get('start_date')"/>
+                        <cbc:EndDate t-esc="foreach_vals.get('end_date')"/>
+                    </cac:InvoicePeriod>
+                </t>
+                <cac:OrderReference t-if="vals.get('order_reference')">
+                    <cbc:ID t-esc="vals['order_reference']"/>
+                </cac:OrderReference>
+                <cac:BillingReference t-if="vals.get('billing_reference_vals')">
+                    <cac:InvoiceDocumentReference>
+                        <cbc:ID t-esc="vals['billing_reference_vals'].get('id')"/>
+                        <cbc:IssueDate t-esc="vals['billing_reference_vals'].get('issue_date')"/>
+                    </cac:InvoiceDocumentReference>
+                </cac:BillingReference>
+                <cac:AdditionalDocumentReference t-if="invoice._l10n_sa_is_simplified()">
+                    <cbc:ID>QR</cbc:ID>
+                    <cac:Attachment>
+                        <cbc:EmbeddedDocumentBinaryObject mimeCode="text/plain">N/A</cbc:EmbeddedDocumentBinaryObject>
+                    </cac:Attachment>
+                </cac:AdditionalDocumentReference>
+                <!-- Add Previous Invoice Hash in compliance with rule BR-KSA-61 -->
+                <cac:AdditionalDocumentReference>
+                    <cbc:ID>PIH</cbc:ID>
+                    <cac:Attachment>
+                        <cbc:EmbeddedDocumentBinaryObject mimeCode="text/plain"
+                                                          t-esc="vals['previous_invoice_hash']"/>
+                    </cac:Attachment>
+                </cac:AdditionalDocumentReference>
+                <!-- Add Invoice Counter Value in compliance with rules BR-KSA-33 and BR-KSA-34 -->
+                <cac:AdditionalDocumentReference>
+                    <cbc:ID>ICV</cbc:ID>
+                    <cbc:UUID t-esc="invoice.l10n_sa_chain_index"/>
+                </cac:AdditionalDocumentReference>
+                <!-- Add Signature references in compliance with rules BR-KSA-29 and BR-KSA-30 -->
+                <cac:Signature t-if="invoice._l10n_sa_is_simplified()">
+                    <cbc:ID>urn:oasis:names:specification:ubl:signature:Invoice</cbc:ID>
+                    <cbc:SignatureMethod>urn:oasis:names:specification:ubl:dsig:enveloped:xades</cbc:SignatureMethod>
+                </cac:Signature>
+                <cac:AccountingSupplierParty>
+                    <t t-set="accounting_supplier_vals" t-value="vals.get('accounting_supplier_party_vals', {})"/>
+                    <cac:Party>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_PartyType_zatca">
+                            <t t-set="vals" t-value="accounting_supplier_vals.get('party_vals', {})"/>
+                        </t>
+                    </cac:Party>
+                </cac:AccountingSupplierParty>
+                <cac:AccountingCustomerParty>
+                    <t t-set="accounting_customer_vals" t-value="vals.get('accounting_customer_party_vals', {})"/>
+                    <cac:Party>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_PartyType_zatca">
+                            <t t-set="vals" t-value="accounting_customer_vals.get('party_vals', {})"/>
+                        </t>
+                    </cac:Party>
+                </cac:AccountingCustomerParty>
+                <t id="delivery_foreach" t-foreach="vals.get('delivery_vals_list', [])" t-as="foreach_vals">
+                    <cac:Delivery>
+                        <cbc:ActualDeliveryDate t-esc="foreach_vals.get('actual_delivery_date')"/>
+                        <cac:DeliveryLocation>
+                            <cac:Address>
+                                <t t-call="l10n_sa_edi_v14.ubl_21_AddressType_zatca">
+                                    <t t-set="vals"
+                                       t-value="foreach_vals.get('delivery_location_vals', {}).get('delivery_address_vals', {})"/>
+                                </t>
+                            </cac:Address>
+                        </cac:DeliveryLocation>
+                    </cac:Delivery>
+                </t>
+                <!-- In UBL 2.0 PaymentMeans is only present for Invoice
+                while in UBL 2.1, it is present for Invoice and CreditNote
+                http://www.datypic.com/sc/ubl20/e-ns19_Invoice.html
+                http://www.datypic.com/sc/ubl20/e-ns14_CreditNote.html -->
+                <t t-if="invoice.move_type == 'out_refund'">
+                    <t t-foreach="vals.get('payment_means_vals_list', [])" t-as="foreach_vals">
+                        <cac:PaymentMeans
+                            xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                            <t t-call="l10n_sa_edi_v14.ubl_21_PaymentMeansType_zatca">
+                                <t t-set="vals" t-value="foreach_vals"/>
+                            </t>
+                        </cac:PaymentMeans>
+                    </t>
+                </t>
+                <t t-if="invoice.move_type == 'out_invoice'">
+                    <t t-foreach="vals.get('payment_means_vals_list', [])" t-as="foreach_vals">
+                        <cac:PaymentMeans>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_PaymentMeansType_zatca">
+                                <t t-set="vals" t-value="foreach_vals"/>
+                            </t>
+                        </cac:PaymentMeans>
+                    </t>
+                </t>
+                <t t-foreach="vals.get('payment_terms_vals', [])" t-as="foreach_vals">
+                    <cac:PaymentTerms>
+                        <t t-foreach="foreach_vals.get('note_vals', [])" t-as="note">
+                            <cbc:Note t-esc="note"/>
+                        </t>
+                    </cac:PaymentTerms>
+                </t>
+                <t t-foreach="vals.get('allowance_charge_vals', [])" t-as="foreach_vals">
+                    <cac:AllowanceCharge>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_AllowanceChargeType_zatca">
+                            <t t-set="vals" t-value="foreach_vals"/>
+                        </t>
+                    </cac:AllowanceCharge>
+                </t>
+                <t t-foreach="vals.get('tax_total_vals', [])" t-as="foreach_vals">
+                    <cac:TaxTotal>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_TaxTotalType_zatca">
+                            <t t-set="vals" t-value="foreach_vals"/>
+                        </t>
+                    </cac:TaxTotal>
+                </t>
+                <cac:LegalMonetaryTotal>
+                    <t t-set="monetary_tot_vals" t-value="vals.get('legal_monetary_total_vals', {})"/>
+                    <cbc:LineExtensionAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('line_extension_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                    <cbc:TaxExclusiveAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('tax_exclusive_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                    <cbc:TaxInclusiveAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('tax_inclusive_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                    <cbc:AllowanceTotalAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('allowance_total_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                    <cbc:PrepaidAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('prepaid_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                    <cbc:PayableAmount
+                        t-att-currencyID="monetary_tot_vals['currency'].name"
+                        t-esc="format_float(monetary_tot_vals.get('payable_amount'), monetary_tot_vals.get('currency_dp'))"/>
+                </cac:LegalMonetaryTotal>
+                <t t-foreach="vals.get('invoice_line_vals', [])" t-as="foreach_vals">
+                    <cac:InvoiceLine>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_InvoiceLineType_zatca">
+                            <t t-set="vals" t-value="foreach_vals"/>
+                        </t>
+                    </cac:InvoiceLine>
+                </t>
+            </Invoice>
+        </template>
+
+        <template id="ubl_21_TaxCategoryType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:ID
+                    t-att="vals.get('id_attrs', {})"
+                    t-esc="vals.get('id')"/>
+                <cbc:Name t-esc="vals.get('name')"/>
+                <cbc:Percent t-esc="vals.get('percent')"/>
+                <cbc:TaxExemptionReasonCode
+                        t-esc="vals.get('tax_exemption_reason_code')"/>
+                <cbc:TaxExemptionReason
+                        t-esc="vals.get('tax_exemption_reason')"/>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </t>
+        </template>
+
+        <template id="ubl_21_AllowanceChargeType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:ChargeIndicator t-esc="vals.get('charge_indicator')"/>
+                <cbc:AllowanceChargeReasonCode t-esc="vals.get('allowance_charge_reason_code')"/>
+                <cbc:AllowanceChargeReason t-esc="vals.get('allowance_charge_reason')"/>
+                <cbc:MultiplierFactorNumeric t-esc="vals.get('multiplier_factor')"/>
+                <cbc:Amount
+                        t-att-currencyID="vals.get('currency_name')"
+                        t-esc="format_float(vals.get('amount'), vals.get('currency_dp'))"/>
+                <t t-foreach="vals.get('tax_category_vals', [])" t-as="foreach_vals">
+                    <cac:TaxCategory>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_TaxCategoryType_zatca">
+                            <t t-set="vals" t-value="foreach_vals"/>
+                        </t>
+                    </cac:TaxCategory>
+                </t>
+            </t>
+        </template>
+
+        <template id="ubl_21_InvoiceLineType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:ID t-esc="vals.get('id')"/>
+                <cbc:Note t-esc="vals.get('note')"/>
+                <cbc:InvoicedQuantity t-att="vals.get('invoiced_quantity_attrs', {})" t-esc="vals['invoiced_quantity']"/>
+                <cbc:LineExtensionAmount
+                        t-att-currencyID="vals['currency'].name"
+                        t-esc="format_float(vals.get('line_extension_amount'), vals.get('currency_dp'))"/>
+                <cac:DocumentReference t-if="vals.get('prepayment_vals', {})">
+                    <cbc:ID t-esc="vals['prepayment_vals']['prepayment_id']"/>
+                    <cbc:IssueDate t-esc="vals['prepayment_vals']['issue_date'].strftime('%Y-%m-%d')"/>
+                    <cbc:IssueTime t-esc="vals['prepayment_vals']['issue_date'].strftime('%H:%M:%S')"/>
+                    <cbc:DocumentTypeCode t-esc="vals['prepayment_vals']['document_type_code']"/>
+                </cac:DocumentReference>
+                <!-- AllowanceCharge is only present for InvoiceLine, not for CreditNoteLine in UBL 2.0
+                (they are both present in UBL 2.1 and next)
+                 http://www.datypic.com/sc/ubl20/e-cac_CreditNoteLine.html
+                 http://www.datypic.com/sc/ubl20/e-cac_InvoiceLine.html
+                 -->
+                <t t-if="invoice.move_type == 'out_invoice'">
+                    <t t-foreach="vals.get('allowance_charge_vals', [])" t-as="foreach_vals">
+                        <cac:AllowanceCharge>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_AllowanceChargeType_zatca">
+                                <t t-set="vals" t-value="foreach_vals"/>
+                            </t>
+                        </cac:AllowanceCharge>
+                    </t>
+                </t>
+                <t t-foreach="vals.get('tax_total_vals', [])" t-as="foreach_vals">
+                    <cac:TaxTotal>
+                        <t t-call="l10n_sa_edi_v14.ubl_21_TaxTotalType_zatca">
+                            <t t-set="vals" t-value="foreach_vals"/>
+                        </t>
+                    </cac:TaxTotal>
+                </t>
+                <cac:Item>
+                    <t t-set="item_vals" t-value="vals.get('item_vals', {})"/>
+                    <cbc:Description t-esc="item_vals.get('description')"/>
+                    <cbc:Name t-esc="item_vals.get('name')"/>
+                    <cac:SellersItemIdentification t-if="item_vals['sellers_item_identification_vals']['id']">
+                        <cbc:ID t-esc="item_vals['sellers_item_identification_vals']['id']"/>
+                    </cac:SellersItemIdentification>
+                    <t t-foreach="item_vals.get('classified_tax_category_vals', [])" t-as="foreach_vals">
+                        <cac:ClassifiedTaxCategory>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_TaxCategoryType_zatca">
+                                <t t-set="vals" t-value="foreach_vals"/>
+                            </t>
+                        </cac:ClassifiedTaxCategory>
+                    </t>
+                </cac:Item>
+                <cac:Price>
+                    <t t-set="vals" t-value="vals.get('price_vals', {})"/>
+                    <cbc:PriceAmount
+                            t-att-currencyID="vals['currency'].name"
+                            t-esc="format_float(vals.get('price_amount'), vals.get('product_price_dp'))"/>
+                    <!-- nbr of item units to which the price applies), i.e.: 1 Dozen = 12 units, not mandatory -->
+                    <cbc:BaseQuantity
+                            t-att="vals.get('base_quantity_attrs', {})"
+                            t-esc="vals.get('base_quantity')"/>
+                </cac:Price>
+            </t>
+        </template>
+
+        <template id="ubl_21_TaxTotalType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:TaxAmount
+                        t-att-currencyID="vals['currency'].name"
+                        t-esc="format_float(vals.get('tax_amount'), vals.get('currency_dp'))"/>
+                <cbc:RoundingAmount t-att-currencyID="vals['currency'].name"
+                                    t-esc="format_float(vals.get('total_amount_sa'), vals['currency_dp'])"/>
+                <t t-foreach="vals.get('tax_subtotal_vals', [])" t-as="foreach_vals">
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount
+                            t-att-currencyID="foreach_vals['currency'].name"
+                            t-esc="format_float(foreach_vals.get('taxable_amount'), foreach_vals.get('currency_dp'))"/>
+                        <cbc:TaxAmount
+                            t-att-currencyID="foreach_vals['currency'].name"
+                            t-esc="format_float(foreach_vals.get('tax_amount'), foreach_vals.get('currency_dp'))"/>
+                        <cbc:Percent t-esc="foreach_vals.get('percent')"/>
+                        <cac:TaxCategory>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_TaxCategoryType_zatca">
+                                <t t-set="vals" t-value="foreach_vals.get('tax_category_vals', {})"/>
+                            </t>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </t>
+            </t>
+        </template>
+
+        <template id="ubl_21_PartyType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <t t-set="partner" t-value="vals.get('partner') or builder.env['res.partner']"/>
+                <cbc:EndpointID
+                        t-att="vals.get('endpoint_id_attrs', {})"
+                        t-esc="vals.get('endpoint_id')"/>
+                <t t-foreach="vals.get('party_identification_vals', [])" t-as="party_vals">
+                    <cac:PartyIdentification t-if="party_vals.get('id')"
+                                             xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                                             xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                                             xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                        <cbc:ID t-att="party_vals.get('id_attrs', {})" t-esc="party_vals['id']"/>
+                    </cac:PartyIdentification>
+                </t>
+                <t t-foreach="vals.get('party_name_vals', [])" t-as="party_vals">
+                    <cac:PartyName>
+                        <cbc:Name t-esc="party_vals.get('name')"/>
+                    </cac:PartyName>
+                </t>
+                <cac:PostalAddress>
+                    <t t-call="l10n_sa_edi_v14.ubl_21_AddressType_zatca">
+                        <t t-set="vals" t-value="vals.get('postal_address_vals', {})"/>
+                    </t>
+                </cac:PostalAddress>
+                <t t-foreach="vals.get('party_tax_scheme_vals', [])" t-as="foreach_vals">
+                    <cac:PartyTaxScheme>
+                        <cbc:RegistrationName t-esc="foreach_vals.get('registration_name')"/>
+                        <cbc:CompanyID
+                                t-att="foreach_vals.get('company_id_attrs', {})"
+                                t-esc="foreach_vals.get('company_id')"/>
+                        <cac:RegistrationAddress>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_AddressType_zatca">
+                                <t t-set="vals" t-value="foreach_vals.get('registration_address_vals', {})"/>
+                            </t>
+                        </cac:RegistrationAddress>
+                        <cac:TaxScheme>
+                            <cbc:ID t-esc="foreach_vals.get('tax_scheme_id')"/>
+                        </cac:TaxScheme>
+                    </cac:PartyTaxScheme>
+                </t>
+
+                <t t-foreach="vals.get('party_legal_entity_vals', [])" t-as="foreach_vals">
+                    <cac:PartyLegalEntity>
+                        <cbc:RegistrationName t-esc="foreach_vals.get('registration_name')"/>
+                        <cbc:CompanyID
+                                t-att="foreach_vals.get('company_id_attrs', {})"
+                                t-esc="foreach_vals.get('company_id')"/>
+                        <cac:RegistrationAddress>
+                            <t t-call="l10n_sa_edi_v14.ubl_21_AddressType_zatca">
+                                <t t-set="vals" t-value="foreach_vals.get('registration_address_vals', {})"/>
+                            </t>
+                        </cac:RegistrationAddress>
+                    </cac:PartyLegalEntity>
+                </t>
+                <cac:Contact>
+                    <t t-set="contact_vals" t-value="vals.get('contact_vals', {})"/>
+                    <cbc:ID t-esc="contact_vals.get('id')"/>
+                    <cbc:Name t-esc="contact_vals.get('name')"/>
+                    <cbc:Telephone t-esc="contact_vals.get('telephone')"/>
+                    <cbc:ElectronicMail t-esc="contact_vals.get('electronic_mail')"/>
+                </cac:Contact>
+            </t>
+        </template>
+
+        <template id="ubl_21_AddressType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:StreetName t-esc="vals.get('street_name')"/>
+                <!--  Add Building number in compliance with rules KSA-17 (seller)/ KSA-18 (customer)  -->
+                <cbc:BuildingNumber t-esc="vals.get('building_number')"/>
+                <!--  Add Plot identification in compliance with rules KSA-23 (seller)/ KSA-19 (customer)  -->
+                <cbc:PlotIdentification t-esc="vals.get('plot_identification')"/>
+                <!--  Add Neighborhood in compliance with rules KSA-3 (seller)/ KSA-4 (customer)  -->
+                <cbc:CitySubdivisionName t-esc="vals.get('neighborhood')"/>
+                <cbc:CityName t-esc="vals.get('city_name')"/>
+                <cbc:PostalZone t-esc="vals.get('postal_zone')"/>
+                <cbc:CountrySubentity t-esc="vals.get('country_subentity')"/>
+                <cbc:CountrySubentityCode t-esc="vals.get('country_subentity_code')"/>
+                <cac:Country>
+                    <t t-set="country_vals" t-value="vals.get('country_vals', {})"/>
+                    <cbc:IdentificationCode
+                        t-att="country_vals.get('identification_code_attrs', {})"
+                        t-esc="country_vals.get('identification_code')"/>
+                    <cbc:Name t-esc="country_vals.get('name')"/>
+                </cac:Country>
+            </t>
+        </template>
+
+        <template id="ubl_21_PaymentMeansType_zatca">
+            <t xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+               xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+                <cbc:PaymentMeansCode
+                        t-att="vals.get('payment_means_code_attrs', {})"
+                        t-esc="vals.get('payment_means_code')"/>
+                <cbc:PaymentDueDate t-esc="vals.get('payment_due_date')"/>
+                <cbc:InstructionID t-esc="vals.get('instruction_id')"/>
+                <cbc:InstructionNote t-esc="vals.get('adjustment_reason')"/>
+                <t t-foreach="vals.get('payment_id_vals', [])" t-as="payment_id">
+                    <cbc:PaymentID t-esc="payment_id"/>
+                </t>
+                <cac:PayeeFinancialAccount>
+                    <t t-set="payee_financial_account_vals" t-value="vals.get('payee_financial_account_vals', {})"/>
+                    <cbc:ID
+                        t-att="payee_financial_account_vals.get('id_attrs', {})"
+                        t-esc="payee_financial_account_vals.get('id')"/>
+                    <cac:FinancialInstitutionBranch>
+                        <t t-set="financial_institution_branch_vals" t-value="payee_financial_account_vals.get('financial_institution_branch_vals', {})"/>
+                        <cbc:ID
+                            t-att="financial_institution_branch_vals.get('id_attrs', {})"
+                            t-esc="financial_institution_branch_vals.get('id')"/>
+                        <cac:FinancialInstitution>
+                            <t t-set="financial_institution_vals" t-value="financial_institution_branch_vals.get('financial_institution_vals', {})"/>
+                            <cbc:ID
+                                t-att="financial_institution_vals.get('id_attrs', {})"
+                                t-esc="financial_institution_vals.get('id')"/>
+                            <cbc:Name t-esc="financial_institution_vals.get('name')"/>
+                            <cac:Address>
+                                <t t-call="l10n_sa_edi_v14.ubl_21_AddressType_zatca">
+                                    <t t-set="vals" t-value="financial_institution_vals.get('address_vals', {})"/>
+                                </t>
+                            </cac:Address>
+                        </cac:FinancialInstitution>
+                    </cac:FinancialInstitutionBranch>
+                </cac:PayeeFinancialAccount>
+            </t>
+        </template>
+
+    </data>
+</odoo>
